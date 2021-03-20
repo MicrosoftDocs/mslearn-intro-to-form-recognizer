@@ -1,0 +1,53 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Form Recognizer - Build and deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.103"
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release src/CognitiveServicesDemo.FormRecognizer
+
+      - name: dotnet publish
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/CognitiveServicesDemo.FormRecognizer src/CognitiveServicesDemo.FormRecognizer
+
+      - name: Deploy to staging slot
+        if: success() && github.event_name == 'pull_request'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "formrecognizer-showcase"
+          slot-name: "staging"
+          publish-profile: ${{ secrets.AzureAppService_Staging }}
+          package: ${{env.DOTNET_ROOT}}/CognitiveServicesDemo.FormRecognizer
+
+      - name: Deploy to production slot
+        if: success() && github.event_name != 'pull_request'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "formrecognizer-showcase"
+          slot-name: "production"
+          publish-profile: ${{ secrets.AzureAppService_Production }}
+          package: ${{env.DOTNET_ROOT}}/CognitiveServicesDemo.FormRecognizer
