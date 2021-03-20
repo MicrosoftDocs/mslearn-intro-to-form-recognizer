@@ -32,7 +32,7 @@ jobs:
         run: dotnet build --configuration Release src
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/CognitiveServicesDemo.FormRecognizer src
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/output src
 
       - name: Deploy to staging slot
         if: success() && github.event_name == 'pull_request'
@@ -41,7 +41,7 @@ jobs:
           app-name: "formrecognizer-showcase"
           slot-name: "staging"
           publish-profile: ${{ secrets.AzureAppService_Staging }}
-          package: ${{env.DOTNET_ROOT}}/CognitiveServicesDemo.FormRecognizer
+          package: ${{env.DOTNET_ROOT}}/output
 
       - name: Deploy to production slot
         if: success() && github.event_name != 'pull_request'
@@ -50,4 +50,4 @@ jobs:
           app-name: "formrecognizer-showcase"
           slot-name: "production"
           publish-profile: ${{ secrets.AzureAppService_Production }}
-          package: ${{env.DOTNET_ROOT}}/CognitiveServicesDemo.FormRecognizer
+          package: ${{env.DOTNET_ROOT}}/output
