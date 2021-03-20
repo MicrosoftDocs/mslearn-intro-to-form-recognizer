@@ -29,10 +29,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release src/CognitiveServicesDemo.FormRecognizer
+        run: dotnet build --configuration Release src
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/CognitiveServicesDemo.FormRecognizer src/CognitiveServicesDemo.FormRecognizer
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/CognitiveServicesDemo.FormRecognizer src
 
       - name: Deploy to staging slot
         if: success() && github.event_name == 'pull_request'
