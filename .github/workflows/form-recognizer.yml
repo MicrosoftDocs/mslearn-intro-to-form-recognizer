@@ -54,12 +54,12 @@ jobs:
           app-name: "formrecognizer-showcase"
           slot-name: "production"
           publish-profile: ${{ secrets.AzureAppService_Production }}
-          package: /output
+          package: ${{env.DOTNET_ROOT}}/output
 
       - name: Deploy artifact to Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
         with:
-          source_dir: ${{env.DOTNET_ROOT}}/output
+          source_dir: ${{env.DOTNET_ROOT}}/output/
           container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
           connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
           sync: false
