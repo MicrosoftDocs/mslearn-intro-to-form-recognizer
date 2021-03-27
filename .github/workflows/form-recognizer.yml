@@ -61,13 +61,4 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
-            az account show
-            az storage -h
-
-      # - name: Deploy artifact to Azure Storage
-      #   uses: bacongobbler/azure-blob-storage-upload@v1.1.1
-      #   with:
-      #     source_dir: ${{env.DOTNET_ROOT}}/output
-      #     container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
-      #     connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
-      #     sync: false
+            az storage blob --connection-string ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }} --source ${{env.DOTNET_ROOT}}/output ${{env.AZURE_STORAGE_CONTAINER_NAME}}
