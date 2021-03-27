@@ -36,7 +36,7 @@ jobs:
         run: dotnet build --configuration Release src
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o /output src
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/output src
 
       - name: Deploy to staging slot
         if: success() && github.event_name == 'pull_request'
@@ -45,7 +45,7 @@ jobs:
           app-name: "formrecognizer-showcase"
           slot-name: "staging"
           publish-profile: ${{ secrets.AzureAppService_Staging }}
-          package: /output
+          package: ${{env.DOTNET_ROOT}}/output
 
       - name: Deploy to production slot
         if: success() && github.event_name != 'pull_request'
@@ -56,13 +56,9 @@ jobs:
           publish-profile: ${{ secrets.AzureAppService_Production }}
           package: /output
 
-      - name: Zip output
-        run: zip -r /artifacts/${{env.OUTPUT_NAME}}.zip /output
-
       - name: Deploy artifact to Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
         with:
-          source_dir: /artifacts
+          source_dir: ${{env.DOTNET_ROOT}}/output
           container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
           connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
-          extra_args: "--pattern *.zip"
