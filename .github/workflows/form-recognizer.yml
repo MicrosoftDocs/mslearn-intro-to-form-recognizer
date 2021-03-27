@@ -62,3 +62,4 @@ jobs:
           source_dir: ${{env.DOTNET_ROOT}}/output
           container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
           connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
+          sync: false
