@@ -11,6 +11,10 @@ on:
     branches:
       - main
 
+env:
+  OUTPUT_NAME: FormRecognizer
+  AZURE_STORAGE_CONTAINER_NAME: build-artifacts
+
 jobs:
   build-and-deploy:
     runs-on: windows-latest
@@ -52,8 +56,17 @@ jobs:
           publish-profile: ${{ secrets.AzureAppService_Production }}
           package: ${{env.DOTNET_ROOT}}/output
 
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
+      - name: Zip output
+        uses: papeloto/action-zip@v1
         with:
-          name: dist-without-markdown
-          path: ${{env.DOTNET_ROOT}}/output
+          files: ${{env.DOTNET_ROOT}}/output
+          recursive: true
+          dest: ${{env.DOTNET_ROOT}}/artifacts/${{OUTPUT_NAME}}.zip
+
+      - name: Deploy artifact to Azure Storage
+        uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+        with:
+          source_dir: ${{env.DOTNET_ROOT}}/artifacts
+          container_name: ${{AZURE_STORAGE_CONTAINER_NAME}}
+          connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
+          extra_args: "--pattern *.zip"
