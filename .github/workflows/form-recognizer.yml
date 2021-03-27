@@ -36,7 +36,7 @@ jobs:
         run: dotnet build --configuration Release src
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/output src
+        run: dotnet publish -c Release -o /output src
 
       - name: Deploy to staging slot
         if: success() && github.event_name == 'pull_request'
