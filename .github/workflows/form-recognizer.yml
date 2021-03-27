@@ -45,7 +45,7 @@ jobs:
           app-name: "formrecognizer-showcase"
           slot-name: "staging"
           publish-profile: ${{ secrets.AzureAppService_Staging }}
-          package: ${{env.DOTNET_ROOT}}/output
+          package: /output
 
       - name: Deploy to production slot
         if: success() && github.event_name != 'pull_request'
@@ -54,19 +54,19 @@ jobs:
           app-name: "formrecognizer-showcase"
           slot-name: "production"
           publish-profile: ${{ secrets.AzureAppService_Production }}
-          package: ${{env.DOTNET_ROOT}}/output
+          package: /output
 
       - name: Zip output
         uses: papeloto/action-zip@v1
         with:
-          files: ${{env.DOTNET_ROOT}}/output
+          files: /output
           recursive: true
-          dest: ${{env.DOTNET_ROOT}}/artifacts/${{env.OUTPUT_NAME}}.zip
+          dest: /artifacts/${{env.OUTPUT_NAME}}.zip
 
       - name: Deploy artifact to Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
         with:
-          source_dir: ${{env.DOTNET_ROOT}}/artifacts
+          source_dir: /artifacts
           container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
           connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
           extra_args: "--pattern *.zip"
