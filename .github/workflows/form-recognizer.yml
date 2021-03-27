@@ -61,12 +61,12 @@ jobs:
         with:
           files: ${{env.DOTNET_ROOT}}/output
           recursive: true
-          dest: ${{env.DOTNET_ROOT}}/artifacts/${{OUTPUT_NAME}}.zip
+          dest: ${{env.DOTNET_ROOT}}/artifacts/${{env.OUTPUT_NAME}}.zip
 
       - name: Deploy artifact to Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
         with:
           source_dir: ${{env.DOTNET_ROOT}}/artifacts
-          container_name: ${{AZURE_STORAGE_CONTAINER_NAME}}
+          container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
           connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
           extra_args: "--pattern *.zip"
