@@ -14,7 +14,7 @@ az cognitiveservices account create \
     --location westus2 \
     --subscription $subscription\
     --yes
-key=$(az cognitiveservices account keys list -g cognitive-services-resource-group -n form-recognizer-resource --query [key1] -o tsv)
+apiKey=$(az cognitiveservices account keys list -g cognitive-services-resource-group -n form-recognizer-resource --query [key1] -o tsv)
 endpoint=https://westus2.api.cognitive.microsoft.com/
 
 # create the webapp
@@ -35,4 +35,4 @@ az webapp deployment source config-zip \
 az webapp config appsettings set \
     --resource-group $resourceGroupName \
     --name $webAppName \
-    --settings FormRecognizer:Endpoint=$endpoint FormRecognizer:Endpoint=$key
+    --settings FormRecognizer:Endpoint=$endpoint FormRecognizer:ApiKey=$apiKey
