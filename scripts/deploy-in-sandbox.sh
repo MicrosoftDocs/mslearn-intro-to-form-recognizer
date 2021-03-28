@@ -25,8 +25,8 @@ az webapp create \
 # download the source files and deploy to the webapp
 curl https://cognitiveserviceshowcase.blob.core.windows.net/build-artifacts/FormRecognizer.zip --output clouddrive/Source.zip
 az webapp deployment source config-zip \
-    --resource-group $resourceGroupName \
-    --name $webAppName \
+    --resource-group demoResourceGroup \
+    --name payment-app-22027 \
     --src clouddrive/Source.zip
 
 # add the appsettings to the webapp

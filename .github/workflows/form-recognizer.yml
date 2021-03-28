@@ -54,12 +54,13 @@ jobs:
           package: ${{env.DOTNET_ROOT}}/output
 
       - name: Zip output
+        working-directory: ${{env.DOTNET_ROOT}}/output
         run: sudo zip -r ${{env.OUTPUT_NAME}}.zip  ${{env.DOTNET_ROOT}}/output
 
       - name: Deploy artifact to Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
         with:
-          source_dir: .
+          source_dir: ${{env.DOTNET_ROOT}}/output
           sync: false
           container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
           connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
