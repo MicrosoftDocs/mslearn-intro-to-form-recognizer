@@ -14,7 +14,7 @@ az cognitiveservices account create \
     --location westus2 \
     --subscription $subscription\
     --yes
-key=a8407e60ea674b058d3726e9e983200b
+key=$(az cognitiveservices account keys list -g cognitive-services-resource-group -n form-recognizer-resource --query [key1] -o tsv)
 endpoint=https://westus2.api.cognitive.microsoft.com/
 
 # create the webapp
