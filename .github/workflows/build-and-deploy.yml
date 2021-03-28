@@ -54,10 +54,12 @@ jobs:
           package: ${{env.DOTNET_ROOT}}/output
 
       - name: Zip output
+        if: success() && github.event_name != 'pull_request'
         working-directory: ${{env.DOTNET_ROOT}}/output
         run: sudo zip -r ${{ github.workspace }}/${{env.OUTPUT_NAME}}.zip .
 
       - name: Deploy artifact to Azure Storage
+        if: success() && github.event_name != 'pull_request'
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
         with:
           source_dir: ${{ github.workspace }}
