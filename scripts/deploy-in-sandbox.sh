@@ -24,15 +24,15 @@ az webapp create \
     --plan F1 \
     --name $webAppName
 
+# add the appsettings to the webapp
+az webapp config appsettings set \
+    --resource-group $resourceGroupName \
+    --name $webAppName \
+    --settings FormRecognizer:Endpoint=$endpoint FormRecognizer:ApiKey=$apiKey
+
 # download the source files and deploy to the webapp
 curl sourceZip --output clouddrive/Source.zip
 az webapp deployment source config-zip \
     --resource-group $resourceGroupName \
     --name $webAppName \
     --src clouddrive/Source.zip
-
-# add the appsettings to the webapp
-az webapp config appsettings set \
-    --resource-group $resourceGroupName \
-    --name $webAppName \
-    --settings FormRecognizer:Endpoint=$endpoint FormRecognizer:ApiKey=$apiKey
