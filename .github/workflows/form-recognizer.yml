@@ -14,10 +14,11 @@ on:
 env:
   OUTPUT_NAME: FormRecognizer
   AZURE_STORAGE_CONTAINER_NAME: build-artifacts
+  OUTPUT_DIRECTORY: ${{env.GITHUB_WORKSPACE}}/output
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-windows
 
     steps:
       - uses: actions/checkout@master
@@ -36,7 +37,7 @@ jobs:
         run: dotnet build --configuration Release src
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.GITHUB_WORKSPACE}}/output src
+        run: dotnet publish -c Release -o  ${{env.OUTPUT_DIRECTORY}} src
 
       - name: Deploy to staging slot
         if: success() && github.event_name == 'pull_request'
@@ -45,7 +46,7 @@ jobs:
           app-name: "formrecognizer-showcase"
           slot-name: "staging"
           publish-profile: ${{ secrets.AzureAppService_Staging }}
-          package: ${{env.GITHUB_WORKSPACE}}/output
+          package: ${{env.OUTPUT_DIRECTORY}}
 
       - name: Deploy to production slot
         if: success() && github.event_name != 'pull_request'
@@ -57,12 +58,12 @@ jobs:
           package: /output
 
       - name: Zip output
-        run: zip -r ${{env.GITHUB_WORKSPACE}}/output/${{env.OUTPUT_NAME}}.zip ${{env.GITHUB_WORKSPACE}}/output
+        run: zip -r  ${{env.OUTPUT_DIRECTORY}}/${{env.OUTPUT_NAME}}.zip  ${{env.OUTPUT_DIRECTORY}}
 
       - name: Deploy artifact to Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
         with:
-          source_dir: ${{env.GITHUB_WORKSPACE}}/artifacts
+          source_dir: ${{env.OUTPUT_DIRECTORY}}
           container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
           connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
           extra_args: "--pattern ${{env.OUTPUT_NAME}}.zip"
