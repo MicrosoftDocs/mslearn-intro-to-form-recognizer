@@ -33,6 +33,6 @@ az webapp deployment source config-zip \
 
 # add the appsettings to the webapp
 az webapp config appsettings set \
-    --resource-group MyResourceGroup \
-    --name MyUniqueApp \
+    --resource-group $resourceGroupName \
+    --name $webAppName \
     --settings FormRecognizer:Endpoint=$endpoint FormRecognizer:Endpoint=$key
