@@ -14,11 +14,11 @@ on:
 env:
   OUTPUT_NAME: FormRecognizer
   AZURE_STORAGE_CONTAINER_NAME: build-artifacts
-  OUTPUT_DIRECTORY: ${{env.GITHUB_WORKSPACE}}/output
+  OUTPUT_DIRECTORY: /output
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-windows
+    runs-on: ubuntu-ubuntu
 
     steps:
       - uses: actions/checkout@master
@@ -37,7 +37,7 @@ jobs:
         run: dotnet build --configuration Release src
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o  ${{env.OUTPUT_DIRECTORY}} src
+        run: dotnet publish -c Release -o ${{env.OUTPUT_DIRECTORY}} src
 
       - name: Deploy to staging slot
         if: success() && github.event_name == 'pull_request'
