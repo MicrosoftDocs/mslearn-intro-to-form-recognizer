@@ -55,7 +55,7 @@ jobs:
 
       - name: Zip output
         working-directory: ${{env.DOTNET_ROOT}}/output
-        run: sudo zip -r ${{env.OUTPUT_NAME}}.zip  ${{env.DOTNET_ROOT}}/output
+        run: sudo zip -r ${{env.OUTPUT_NAME}}.zip .
 
       - name: Deploy artifact to Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
