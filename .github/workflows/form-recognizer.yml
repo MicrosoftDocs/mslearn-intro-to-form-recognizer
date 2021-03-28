@@ -54,7 +54,7 @@ jobs:
           package: /output
 
       - name: Zip output
-        run: zip -r  ${{env.GITHUB_WORKSPACE}}/${{env.OUTPUT_NAME}}.zip  ${{env.DOTNET_ROOT}}/output
+        run: sudo zip -r  ${{env.GITHUB_WORKSPACE}}/${{env.OUTPUT_NAME}}.zip  ${{env.DOTNET_ROOT}}/output
 
       - name: Deploy artifact to Azure Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
