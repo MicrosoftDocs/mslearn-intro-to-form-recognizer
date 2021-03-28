@@ -13,12 +13,12 @@ on:
 
 env:
   OUTPUT_NAME: FormRecognizer
-  AZURE_STORAGE_CONTAINER_NAME: build-artifacts
   OUTPUT_DIRECTORY: /output
+  AZURE_STORAGE_CONTAINER_NAME: build-artifacts
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-ubuntu
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
