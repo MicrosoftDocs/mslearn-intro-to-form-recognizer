@@ -3,6 +3,7 @@ using Azure.AI.FormRecognizer;
 using Azure.AI.FormRecognizer.Models;
 using CognitiveServicesDemo.FormRecognizer.Models;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -139,7 +140,7 @@ namespace CognitiveServicesDemo.FormRecognizer.Services
             if (_client == null)
             {
                 string endpoint = _options.Endpoint;
-                string apiKey = _options.ApiKey;
+                string apiKey = ConfigurationManager.AppSettings[ApiKey];
                 var credential = new AzureKeyCredential(apiKey);
 
                 _client = new FormRecognizerClient(new Uri(endpoint), credential);
