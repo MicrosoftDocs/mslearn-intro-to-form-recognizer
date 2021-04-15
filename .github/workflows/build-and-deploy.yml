@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Form Recognizer - Build and deploy
 
 on:
@@ -11,9 +8,13 @@ on:
     branches:
       - main
 
+env:
+  OUTPUT_NAME: FormRecognizer
+  AZURE_STORAGE_CONTAINER_NAME: build-artifacts
+
 jobs:
   build-and-deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
@@ -51,3 +52,18 @@ jobs:
           slot-name: "production"
           publish-profile: ${{ secrets.AzureAppService_Production }}
           package: ${{env.DOTNET_ROOT}}/output
+
+      - name: Zip output
+        if: success() && github.event_name != 'pull_request'
+        working-directory: ${{env.DOTNET_ROOT}}/output
+        run: sudo zip -r ${{ github.workspace }}/${{env.OUTPUT_NAME}}.zip .
+
+      - name: Deploy artifact to Azure Storage
+        if: success() && github.event_name != 'pull_request'
+        uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+        with:
+          source_dir: ${{ github.workspace }}
+          sync: false
+          container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
+          connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
+          extra_args: "--pattern ${{env.OUTPUT_NAME}}.zip"
