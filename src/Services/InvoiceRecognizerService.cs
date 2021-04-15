@@ -140,7 +140,7 @@ namespace CognitiveServicesDemo.FormRecognizer.Services
             if (_client == null)
             {
                 string endpoint = _options.Endpoint;
-                string apiKey = ConfigurationManager.AppSettings[ApiKey];
+                string apiKey = ConfigurationManager.AppSettings["ApiKey"];
                 var credential = new AzureKeyCredential(apiKey);
 
                 _client = new FormRecognizerClient(new Uri(endpoint), credential);
