@@ -10,7 +10,8 @@ on:
 
 env:
   OUTPUT_NAME: FormRecognizer
-  AZURE_STORAGE_CONTAINER_NAME: build-artifacts
+  AZURE_STORAGE_CONTAINER_NAME_PRODUCTION: build-artifacts
+  AZURE_STORAGE_CONTAINER_NAME_STAGING: build-artifacts-staging
 
 jobs:
   build-and-deploy:
@@ -54,9 +55,19 @@ jobs:
           package: ${{env.DOTNET_ROOT}}/output
 
       - name: Zip output
-        if: success() && github.event_name != 'pull_request'
+        if: success()
         working-directory: ${{env.DOTNET_ROOT}}/output
         run: sudo zip -r ${{ github.workspace }}/${{env.OUTPUT_NAME}}.zip .
+
+      - name: Deploy artifact to Azure Storage
+        if: success() && github.event_name == 'pull_request'
+        uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+        with:
+          source_dir: ${{ github.workspace }}
+          sync: false
+          container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME_STAGING}}
+          connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
+          extra_args: "--pattern ${{env.OUTPUT_NAME}}.zip"
 
       - name: Deploy artifact to Azure Storage
         if: success() && github.event_name != 'pull_request'
@@ -64,6 +75,6 @@ jobs:
         with:
           source_dir: ${{ github.workspace }}
           sync: false
-          container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME}}
+          container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME_PRODUCTION}}
           connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
           extra_args: "--pattern ${{env.OUTPUT_NAME}}.zip"

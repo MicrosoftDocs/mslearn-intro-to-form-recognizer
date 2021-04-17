@@ -3,6 +3,7 @@ using Azure.AI.FormRecognizer;
 using Azure.AI.FormRecognizer.Models;
 using CognitiveServicesDemo.FormRecognizer.Models;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace CognitiveServicesDemo.FormRecognizer.Services
 {
-    // TODO: Check if we wanna an interface here to make it look more real
     public class InvoiceRecognizerService
     {
         private static readonly RecognizeInvoicesOptions OperationOptions = new RecognizeInvoicesOptions() { Locale = "en-US" };
