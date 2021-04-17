@@ -55,7 +55,7 @@ jobs:
           package: ${{env.DOTNET_ROOT}}/output
 
       - name: Zip output
-        if: success() && github.event_name != 'pull_request'
+        if: success()
         working-directory: ${{env.DOTNET_ROOT}}/output
         run: sudo zip -r ${{ github.workspace }}/${{env.OUTPUT_NAME}}.zip .
 
