@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace CognitiveServicesDemo.FormRecognizer.Services
 {
-    // TODO: Check if we wanna an interface here to make it look more real
     public class ReceiptRecognizerService
     {
         private static readonly RecognizeReceiptsOptions OperationOptions = new RecognizeReceiptsOptions() { Locale = "en-US" };
@@ -122,7 +121,7 @@ namespace CognitiveServicesDemo.FormRecognizer.Services
             if (_client == null)
             {
                 string endpoint = _options.Endpoint;
-                string apiKey = ConfigurationManager.AppSettings["ApiKey"];
+                string apiKey = _options.ApiKey;
                 var credential = new AzureKeyCredential(apiKey);
 
                 _client = new FormRecognizerClient(new Uri(endpoint), credential);
