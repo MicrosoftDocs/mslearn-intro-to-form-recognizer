@@ -9,7 +9,7 @@ subscription=$(az account list --query [0].id -o tsv)
 resourceGroupName=$(az group list --query "[0] | name" -o tsv)
 
 # Create appservice plan
-appServiceName=form-recognizer-$RANDOM
+appServiceName=fr-$resourceGroupName
 az appservice plan create --name $appServiceName --resource-group $resourceGroupName --sku FREE
 
 # Create Azure Cogntive Services account and put key and endpoint into variables
@@ -25,7 +25,7 @@ apiKey=$(az cognitiveservices account keys list -g $resourceGroupName -n form-re
 endpoint=https://westus2.api.cognitive.microsoft.com/
 
 # create the webapp
-webAppName=form-recognizer-$RANDOM
+webAppName=fr-$resourceGroupName
 az webapp create \
     --resource-group $resourceGroupName \
     --plan $appServiceName \
