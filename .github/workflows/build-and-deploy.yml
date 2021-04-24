@@ -3,12 +3,12 @@ name: Form Recognizer - Build and deploy
 on:
   push:
     branches:
-      - jasonBuildTweaking
+      - main
     paths-ignore:
       - 'build-artifacts/**'
   pull_request:
     branches:
-      - jasonBuildTweaking
+      - main
     paths-ignore:
       - 'build-artifacts/**'
 
