@@ -71,7 +71,7 @@ jobs:
           sudo zip -FS -r ${{ github.workspace }}/build-artifacts/prod/${{env.OUTPUT_NAME}}.zip .
 
       - name: Overwrite and check-in zip
-        if: success()
+        if: success() && github.event_name != 'pull_request'
         run: |
           git config --global user.name 'github action commit'
           git config --global user.email 'githubactioncheckin@users.noreply.github.com'
