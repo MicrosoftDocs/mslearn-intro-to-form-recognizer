@@ -59,12 +59,16 @@ jobs:
       # - name: Zip stage output
       #   if: success() && github.event_name == 'pull_request'
       #   working-directory: ${{env.DOTNET_ROOT}}/output
-      #   run: sudo zip -FS -r ${{ github.workspace }}/build-artifacts/stage/${{env.OUTPUT_NAME}}.zip .
+      #   run: |
+          # mkdir -p ${{ github.workspace }}/build-artifacts/stage/
+          # sudo zip -FS -r ${{ github.workspace }}/build-artifacts/stage/${{env.OUTPUT_NAME}}.zip .
 
       - name: Zip prod output
         if: success() && github.event_name != 'pull_request'
         working-directory: ${{env.DOTNET_ROOT}}/output
-        run: sudo zip -FS -r ${{ github.workspace }}/build-artifacts/prod/${{env.OUTPUT_NAME}}.zip .
+        run: |
+          mkdir -p ${{ github.workspace }}/build-artifacts/prod/
+          sudo zip -FS -r ${{ github.workspace }}/build-artifacts/prod/${{env.OUTPUT_NAME}}.zip .
 
       - name: Overwrite and check-in zip
         if: success()
