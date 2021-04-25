@@ -1,5 +1,5 @@
 # Define the zip file we are going to deploy for this module
-sourceZip=https://cognitiveserviceshowcase.blob.core.windows.net/build-artifacts/FormRecognizer.zip
+sourceZip=https://raw.githubusercontent.com/MicrosoftDocs/mslearn-intro-to-form-recognizer/jasonBuildTweaking/build-artifacts/prod/FormRecognizer.zip
 
 # Get the zip file
 curl $sourceZip --output source.zip

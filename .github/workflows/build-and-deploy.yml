@@ -4,21 +4,23 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'build-artifacts/**'
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - 'build-artifacts/**'
 
 env:
   OUTPUT_NAME: FormRecognizer
-  AZURE_STORAGE_CONTAINER_NAME_PRODUCTION: build-artifacts
-  AZURE_STORAGE_CONTAINER_NAME_STAGING: build-artifacts-staging
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
@@ -54,27 +56,45 @@ jobs:
           publish-profile: ${{ secrets.AzureAppService_Production }}
           package: ${{env.DOTNET_ROOT}}/output
 
-      - name: Zip output
-        if: success()
-        working-directory: ${{env.DOTNET_ROOT}}/output
-        run: sudo zip -r ${{ github.workspace }}/${{env.OUTPUT_NAME}}.zip .
+      # - name: Zip stage output
+      #   if: success() && github.event_name == 'pull_request'
+      #   working-directory: ${{env.DOTNET_ROOT}}/output
+      #   run: |
+          # mkdir -p ${{ github.workspace }}/build-artifacts/stage/
+          # sudo zip -FS -r ${{ github.workspace }}/build-artifacts/stage/${{env.OUTPUT_NAME}}.zip .
 
-      - name: Deploy artifact to Azure Storage
-        if: success() && github.event_name == 'pull_request'
-        uses: bacongobbler/azure-blob-storage-upload@v1.1.1
-        with:
-          source_dir: ${{ github.workspace }}
-          sync: false
-          container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME_STAGING}}
-          connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
-          extra_args: "--pattern ${{env.OUTPUT_NAME}}.zip"
-
-      - name: Deploy artifact to Azure Storage
+      - name: Zip prod output
         if: success() && github.event_name != 'pull_request'
-        uses: bacongobbler/azure-blob-storage-upload@v1.1.1
-        with:
-          source_dir: ${{ github.workspace }}
-          sync: false
-          container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME_PRODUCTION}}
-          connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
-          extra_args: "--pattern ${{env.OUTPUT_NAME}}.zip"
+        working-directory: ${{env.DOTNET_ROOT}}/output
+        run: |
+          mkdir -p ${{ github.workspace }}/build-artifacts/prod/
+          sudo zip -FS -r ${{ github.workspace }}/build-artifacts/prod/${{env.OUTPUT_NAME}}.zip .
+
+      - name: Overwrite and check-in zip
+        if: success() && github.event_name != 'pull_request'
+        run: |
+          git config --global user.name 'github action commit'
+          git config --global user.email 'githubactioncheckin@users.noreply.github.com'
+          git add .
+          git commit -m "Build zip from commit:$(git rev-parse HEAD)"
+          git push
+
+      # - name: Deploy artifact to Azure Storage
+      #   if: success() && github.event_name == 'pull_request'
+      #   uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+      #   with:
+      #     source_dir: ${{ github.workspace }}
+      #     sync: false
+      #     container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME_STAGING}}
+      #     connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
+      #     extra_args: "--pattern ${{env.OUTPUT_NAME}}.zip"
+
+      # - name: Deploy artifact to Azure Storage
+      #   if: success() && github.event_name != 'pull_request'
+      #   uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+      #   with:
+      #     source_dir: ${{ github.workspace }}
+      #     sync: false
+      #     container_name: ${{env.AZURE_STORAGE_CONTAINER_NAME_PRODUCTION}}
+      #     connection_string: ${{ secrets.ARTIFACTS_AZURE_STORAGE_CONNECTION_STRING }}
+      #     extra_args: "--pattern ${{env.OUTPUT_NAME}}.zip"
