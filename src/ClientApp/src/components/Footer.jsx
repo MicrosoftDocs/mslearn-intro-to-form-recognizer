@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="row justify-content-end">
+      <div className="row justify-content-end small">
         <div class="mr-4">Contact us</div>
         <div class="mr-4">FAQ</div>
         <div class="mr-4">Privacy & cookies</div>

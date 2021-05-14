@@ -1,3 +1,9 @@
+@import url('http://fonts.cdnfonts.com/css/segoe-ui-4');
+
+
+body {
+  font-family: 'Segoe UI', sans-serif !important;
+}
 .btn-image--selected img {
   border: 1px solid black;
 }
@@ -11,7 +17,7 @@
 }
 
 .btn-primary {
-  background-color: #0077d3;
+  background-color: #0078d4;
 }
 
 .nav-tabs .nav-item {
@@ -31,10 +37,14 @@
   outline: none;
 }
 
+.nav-tabs .nav-item .nav-link {
+  color: #0078d4;
+}
 .nav-tabs .nav-item .nav-link.active {
   color: white;
-  background-color: #0077d3;
+  background-color: #0078d4;
 }
+
 
 .text {
   color: white;
@@ -63,7 +73,7 @@
   border-top: 1.1em solid rgba(255, 255, 255, 0.2);
   border-right: 1.1em solid rgba(255, 255, 255, 0.2);
   border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-left: 1.1em solid #0077d3;
+  border-left: 1.1em solid #0078d4;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -91,7 +101,6 @@
   }
 }
 
-
 footer {
   z-index: 90;
   padding: 0.7rem 0;
@@ -106,3 +115,7 @@ footer {
   min-height: 880px;
 }
 
+.documentSelector {
+  background-color: #0078d4;
+  padding: 1px;
+}

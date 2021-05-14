@@ -1,6 +1,10 @@
+import className from "classnames";
+import { useState } from "react";
+import DocumentSelector from "../components/DocumentSelector";
+import { ArrowRightIcon } from "@primer/octicons-react";
+
 const LandingPage = () => {
   return (
-    
     <div className="row m-0">
       <div
         className="col-sm main-bg-div"
@@ -36,17 +40,8 @@ const LandingPage = () => {
             <p className="small">I want to convert:</p>
           </div>
 
-          {/* menu */}
-          <div className="mt-4">
-            <nav class="nav nav-pills nav-justified">
-              <a class="nav-item nav-link" href="#">
-                Invoices
-              </a>
-              <a class="nav-item nav-link active" href="#">
-                Receipts
-              </a>
-            </nav>
-          </div>
+          {/* document selector */}
+          <DocumentSelector />
 
           {/* separator */}
           <div className="mt-5">
@@ -58,7 +53,8 @@ const LandingPage = () => {
             <div className="row justify-content-end">
               <div className="mr-3">
                 <button type="button" className="btn btn-primary">
-                  &nbsp; Next Step &nbsp; &gt; &nbsp;
+                  &nbsp; Next Step &nbsp;
+                  <ArrowRightIcon size={16} />
                 </button>
               </div>
             </div>
@@ -70,8 +66,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      </div>
-      
+    </div>
   );
 };
 
