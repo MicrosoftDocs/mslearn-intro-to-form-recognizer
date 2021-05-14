@@ -1,6 +1,6 @@
 const LandingPage = () => {
   return (
-    // <div className="container"></div>
+    
     <div className="row m-0">
       <div
         className="col-sm main-bg-div"
@@ -10,7 +10,7 @@ const LandingPage = () => {
           "background-size": "cover",
         }}
       ></div>
-      <div className="col-sm ml-5">
+      <div className="col-sm">
         <div className="container">
           {/* logo */}
           <div className="mt-5 pb-5">
@@ -70,7 +70,8 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      
   );
 };
 
