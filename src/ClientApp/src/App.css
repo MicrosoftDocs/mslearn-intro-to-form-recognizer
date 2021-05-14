@@ -90,3 +90,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+footer {
+  z-index: 90;
+  padding: 0.7rem 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #efefef;
+}
+
+.main-bg-div {
+  min-height: 700px;
+}
+
+.nav > .nav-pills{
+  border-radius: 0;
+}
