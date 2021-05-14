@@ -3,14 +3,14 @@ const LandingPage = () => {
     // <div className="container"></div>
     <div className="row m-0">
       <div
-        className="col main-bg-div"
+        className="col-sm main-bg-div"
         style={{
           "background-image": "url('/dude-with-notebook.png')",
           "background-repeat": "no-repeat",
           "background-size": "cover",
         }}
       ></div>
-      <div className="col ml-5">
+      <div className="col-sm ml-5">
         <div className="container">
           {/* logo */}
           <div className="mt-5 pb-5">
@@ -40,10 +40,10 @@ const LandingPage = () => {
           <div className="mt-4">
             <nav class="nav nav-pills nav-justified">
               <a class="nav-item nav-link" href="#">
-                Active
+                Invoices
               </a>
               <a class="nav-item nav-link active" href="#">
-                Link
+                Receipts
               </a>
             </nav>
           </div>
@@ -58,10 +58,15 @@ const LandingPage = () => {
             <div className="row justify-content-end">
               <div className="mr-3">
                 <button type="button" className="btn btn-primary">
-                  Next Step &nbsp; &gt;
+                  &nbsp; Next Step &nbsp; &gt; &nbsp;
                 </button>
               </div>
             </div>
+          </div>
+
+          {/* space at the bottom for mobile */}
+          <div className="mt-5">
+            <p>&nbsp;</p>
           </div>
         </div>
       </div>
