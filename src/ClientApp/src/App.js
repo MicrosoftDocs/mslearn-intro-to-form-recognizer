@@ -12,7 +12,7 @@ import {
 import { getDataUrlFromFile, getImageUriFromFileName } from "./utility";
 import Footer from "./components/Footer";
 import LandingPage from "./pages/LandingPage";
-import FileSelector from "./pages/FileSelector";
+import FileSelectorPage from "./pages/FileSelectorPage";
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
           </Route>
 
           <Route path="/fileselector" exact>
-            <FileSelector />
+            <FileSelectorPage />
           </Route>
         </main>
         <Footer />
