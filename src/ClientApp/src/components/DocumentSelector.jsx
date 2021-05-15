@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useStore } from "../store/global.store";
 
 const DocumentSelector = () => {
-  const [activeTab, setActiveTab] = useState("Invoices");
-  const informationTitle = "Invoices";
+  const activeTab = useStore((state) => state.activeTab);
+  const setActiveTab = useStore((state) => state.setActiveTab);
+
   return (
     <div className="mt-4">
       <div className="documentSelector">
@@ -18,7 +19,7 @@ const DocumentSelector = () => {
               })}
               aria-current="page"
             >
-              {informationTitle}
+              Invoices
             </button>
           </li>
           <li className="nav-item">
