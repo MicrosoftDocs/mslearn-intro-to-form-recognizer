@@ -20,7 +20,7 @@ const FileSelector = () => {
 
       {/* document selector */}
       <div className="mt-4">
-        <DocumentSelector />
+        <DocumentSelector menuStyle="links"/>
       </div>
 
       {/* separator */}

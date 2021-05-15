@@ -1,12 +1,17 @@
 import className from "classnames";
 import { useStore } from "../store/global.store";
 
-const DocumentSelector = () => {
+const DocumentSelector = (props) => {
   const activeTab = useStore((state) => state.activeTab);
   const setActiveTab = useStore((state) => state.setActiveTab);
 
-  return (
-    
+  if (props.menuStyle == "links") {
+    // return the selector as links
+    return (<p>Linked selector here</p>)
+
+  } else {
+    // return the selector as navbar
+    return (
       <div className="documentSelector">
         <ul className="nav nav-tabs">
           <li className="nav-item">
@@ -34,7 +39,14 @@ const DocumentSelector = () => {
           </li>
         </ul>
       </div>
-  );
+    );
+  }
+
+};
+
+// Set default props
+DocumentSelector.defaultProps = {
+  menuStyle: "nav",
 };
 
 export default DocumentSelector;
