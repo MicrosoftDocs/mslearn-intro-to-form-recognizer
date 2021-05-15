@@ -1,8 +1,7 @@
-@import url('http://fonts.cdnfonts.com/css/segoe-ui-4');
-
+@import url("http://fonts.cdnfonts.com/css/segoe-ui-4");
 
 body {
-  font-family: 'Segoe UI', sans-serif !important;
+  font-family: "Segoe UI", sans-serif !important;
 }
 .btn-image--selected img {
   border: 1px solid black;
@@ -44,7 +43,6 @@ body {
   color: white;
   background-color: #0078d4;
 }
-
 
 .text {
   color: white;
@@ -113,7 +111,7 @@ footer {
 
 .main-bg-div {
   min-height: 880px;
-  background-image: url('./images/dude-with-notebook.png');
+  background-image: url("./images/dude-with-notebook.png");
   background-repeat: "no-repeat";
   background-rize: "cover";
 }
@@ -121,4 +119,13 @@ footer {
 .documentSelector {
   background-color: #0078d4;
   padding: 1px;
+}
+
+.elevated {
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
+  border: solid 1px #dedede;
 }

@@ -35,7 +35,9 @@ const LandingPage = () => {
           </div>
 
           {/* document selector */}
-          <DocumentSelector />
+          <div className="mt-4">
+            <DocumentSelector />
+          </div>
 
           {/* separator */}
           <div className="mt-5">

@@ -17,5 +17,7 @@ const setActiveTab = (tabName) => {
 // defines a store, setting the intial state
 export const useStore = create((set, get) => ({
   activeTab: "Invoices",
+  selectedImage: "",
+  imageData: "",
   setActiveTab: setActiveTab
 }));

@@ -6,7 +6,7 @@ const DocumentSelector = () => {
   const setActiveTab = useStore((state) => state.setActiveTab);
 
   return (
-    <div className="mt-4">
+    
       <div className="documentSelector">
         <ul className="nav nav-tabs">
           <li className="nav-item">
@@ -34,7 +34,6 @@ const DocumentSelector = () => {
           </li>
         </ul>
       </div>
-    </div>
   );
 };
 
