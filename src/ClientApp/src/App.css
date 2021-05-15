@@ -44,6 +44,16 @@ body {
   background-color: #0078d4;
 }
 
+/* nav links for Document Selector */
+/* 
+  .navbar .navbar-nav .nav-item .nav-link {
+    padding: 0 1em;
+  }
+  .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
+    border-right: 1px solid #a2a2a2;
+  }  
+  */
+
 .text {
   color: white;
   font-size: 20px;
@@ -113,13 +123,28 @@ footer {
   min-height: 880px;
   background-image: url("./images/dude-with-notebook.png");
   background-repeat: "no-repeat";
-  background-rize: "cover";
+  background-size: "cover";
 }
 
 .documentSelector {
   background-color: #0078d4;
   padding: 1px;
 }
+
+.linkedDocumentSelector {
+  padding: 1px;
+  color: #a2a2a2;
+}
+
+.linked-menu-item {
+  color: #a2a2a2;
+}
+
+.active-linked-menu-item  {
+  color: #406fdb;
+  text-decoration: underline;
+}
+
 
 .elevated {
   padding-top: 60px;
