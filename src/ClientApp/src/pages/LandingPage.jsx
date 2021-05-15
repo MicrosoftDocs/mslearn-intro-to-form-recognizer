@@ -1,19 +1,13 @@
-import className from "classnames";
-import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import DocumentSelector from "../components/DocumentSelector";
 import { ArrowRightIcon } from "@primer/octicons-react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const LandingPage = () => {
+  const history = useHistory();
   return (
     <div className="row m-0">
-      <div
-        className="col-sm main-bg-div"
-        style={{
-          "backgroundImage": "url('/dude-with-notebook.png')",
-          "backgroundRepeat": "no-repeat",
-          "backgroundSize": "cover",
-        }}
-      ></div>
+      <div className="col-sm main-bg-div"></div>
       <div className="col-sm">
         <div className="container">
           {/* logo */}
@@ -52,10 +46,12 @@ const LandingPage = () => {
           <div className="mt-5">
             <div className="row justify-content-end">
               <div className="mr-3">
-                <button type="button" className="btn btn-primary">
-                  &nbsp; Next Step &nbsp;
-                  <ArrowRightIcon size={16} />
-                </button>
+                <Link to="/fileselector">
+                  <button type="button" className="btn btn-primary">
+                    &nbsp; Next Step &nbsp;
+                    <ArrowRightIcon size={16} />
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

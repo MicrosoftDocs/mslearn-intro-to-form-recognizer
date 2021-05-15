@@ -12,6 +12,7 @@ import {
 import { getDataUrlFromFile, getImageUriFromFileName } from "./utility";
 import Footer from "./components/Footer";
 import LandingPage from "./pages/LandingPage";
+import FileSelector from "./pages/FileSelector";
 
 const App = () => {
   return (
@@ -21,6 +22,10 @@ const App = () => {
         <main className="flex-fill">
           <Route path="/" exact>
             <LandingPage />
+          </Route>
+
+          <Route path="/fileselector" exact>
+            <FileSelector />
           </Route>
         </main>
         <Footer />

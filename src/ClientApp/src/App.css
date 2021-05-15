@@ -113,6 +113,9 @@ footer {
 
 .main-bg-div {
   min-height: 880px;
+  background-image: url('./images/dude-with-notebook.png');
+  background-repeat: "no-repeat";
+  background-rize: "cover";
 }
 
 .documentSelector {
