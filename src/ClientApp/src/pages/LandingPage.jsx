@@ -9,9 +9,9 @@ const LandingPage = () => {
       <div
         className="col-sm main-bg-div"
         style={{
-          "background-image": "url('/dude-with-notebook.png')",
-          "background-repeat": "no-repeat",
-          "background-size": "cover",
+          "backgroundImage": "url('/dude-with-notebook.png')",
+          "backgroundRepeat": "no-repeat",
+          "backgroundSize": "cover",
         }}
       ></div>
       <div className="col-sm">
