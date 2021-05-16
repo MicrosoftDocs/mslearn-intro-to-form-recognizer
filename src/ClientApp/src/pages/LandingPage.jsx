@@ -8,8 +8,8 @@ const LandingPage = () => {
   return (
     <div className="row m-0">
       <div className="col-sm main-bg-div"></div>
-      <div className="col-sm">
-        <div className="container">
+      <div className="col-sm-6">
+        <div className="container-fluid">
           {/* logo */}
           <div className="mt-5 pb-5">
             <img
