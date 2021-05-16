@@ -18,7 +18,6 @@ const App = () => {
   return (
     <Router>
       <div className="d-flex flex-column sticky-footer-wrapper min-vh-100">
-        {/* <nav>nav</nav> */}
         <main className="flex-fill">
           <Route path="/" exact>
             <LandingPage />
