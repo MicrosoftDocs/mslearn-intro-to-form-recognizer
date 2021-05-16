@@ -1,10 +1,8 @@
-import { useHistory } from "react-router-dom";
 import DocumentSelector from "../components/DocumentSelector";
 import { ArrowRightIcon } from "@primer/octicons-react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const LandingPage = () => {
-  const history = useHistory();
   return (
     <div className="row m-0">
       <div className="col-sm main-bg-div"></div>

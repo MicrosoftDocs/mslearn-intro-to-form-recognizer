@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useStore } from "../store/global.store";
-import DocumentSelector from "../components/DocumentSelector";
 import { ArrowRightIcon } from "@primer/octicons-react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import DocumentSelector from "../components/DocumentSelector";
+import DragAndDrop from "../components/DragAndDrop";
 
 const FileSelectorPage = () => {
   const activeTab = useStore((state) => state.activeTab);
   const setActiveTab = useStore((state) => state.setActiveTab);
 
   useEffect(() => {
-    console.log("selected document changed to " + activeTab);
+    console.log("(FileSelectorPage) Selected document set to " + activeTab);
   }, [activeTab]);
 
   return (
@@ -40,16 +41,13 @@ const FileSelectorPage = () => {
 
       <div className="mt-3">
         <div className="elevated">
-          File
-          <p>
-            selection
-            <br />
-            interface
-            <br />
-            here
-            <br />
-            <br />
-          </p>
+          <div className="row">
+            <div className="col-md-4">
+              <DragAndDrop/>
+            </div>
+            <div className="col-md-1 vert-separator"></div>
+            <div className="col-md-7">Image gallery here</div>
+          </div>
         </div>
       </div>
 

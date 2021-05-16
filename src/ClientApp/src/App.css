@@ -155,3 +155,13 @@ footer {
   box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
   border: solid 1px #dedede;
 }
+
+.vert-separator {
+  padding-left: 10px;
+  padding-right: 10px;
+  border-left: solid 1px #b2b2b2;
+}
+
+.dragAndDropContainer {
+  min-height: 619px;
+}
