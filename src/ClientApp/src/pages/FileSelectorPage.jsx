@@ -1,18 +1,10 @@
-import { useEffect } from "react";
-import { useStore } from "../store/global.store";
 import { ArrowRightIcon } from "@primer/octicons-react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import DocumentSelector from "../components/DocumentSelector";
 import DragAndDrop from "../components/DragAndDrop";
+import Gallery from "../components/Gallery";
 
 const FileSelectorPage = () => {
-  const activeTab = useStore((state) => state.activeTab);
-  const setActiveTab = useStore((state) => state.setActiveTab);
-
-  useEffect(() => {
-    console.log("(FileSelectorPage) Selected document set to " + activeTab);
-  }, [activeTab]);
-
   return (
     <div className="container">
       <div className="mt-5 pb-5">
@@ -41,12 +33,13 @@ const FileSelectorPage = () => {
 
       <div className="mt-3">
         <div className="elevated">
-          <div className="row">
+          <div className="row justify-content-start">
             <div className="col-md-4">
-              <DragAndDrop/>
+              <DragAndDrop />
             </div>
-            <div className="col-md-1 vert-separator"></div>
-            <div className="col-md-7">Image gallery here</div>
+            <div className="col-md-8">
+              <Gallery />
+            </div>
           </div>
         </div>
       </div>

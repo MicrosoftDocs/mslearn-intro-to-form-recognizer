@@ -141,11 +141,10 @@ footer {
   color: #a2a2a2;
 }
 
-.active-linked-menu-item  {
+.active-linked-menu-item {
   color: #406fdb;
   text-decoration: underline;
 }
-
 
 .elevated {
   padding-top: 60px;
@@ -164,4 +163,10 @@ footer {
 
 .dragAndDropContainer {
   min-height: 619px;
+}
+
+.gallery {
+  background-color: aqua;
+  border-left: solid 1px #b2b2b2;
+
 }
