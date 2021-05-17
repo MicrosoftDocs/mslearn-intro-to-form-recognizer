@@ -7,9 +7,7 @@ const Gallery = () => {
   const activeTab = useStore((state) => state.activeTab);
   const selectedImage = useStore((state) => state.selectedImage);
   const onSelectImage = useStore((state) => state.onSelectImage);
-    const images = activeTab === "Invoices" ? INVOICES : RECEIPTS;
-    console.log("SelectedImage")
-    console.log(selectedImage)
+  const images = activeTab === "Invoices" ? INVOICES : RECEIPTS;
 
   return (
     <div className="gallery-container">
@@ -17,6 +15,7 @@ const Gallery = () => {
         {activeTab === "Invoices" ? "Invoice" : "Receipt"} Gallery
       </p>
       <div className="gallery-grid">
+        {/* TODO: Break into rows and add styling + fitting into box */}
         <div>
           {images.map((image) => {
             const uri = getImageUriFromFileName(image.filename);
