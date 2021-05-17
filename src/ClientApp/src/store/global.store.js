@@ -1,4 +1,4 @@
-import create, { SetState, GetState } from "zustand";
+import create from "zustand";
 import { getDataUrlFromFile, getImageUriFromFileName } from "../utility";
 
 // ---------------------------------------------------------------
