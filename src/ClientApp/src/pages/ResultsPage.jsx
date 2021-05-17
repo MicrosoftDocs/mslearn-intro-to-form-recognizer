@@ -1,10 +1,8 @@
-import { ArrowRightIcon } from "@primer/octicons-react";
+import { ArrowLeftIcon, ArrowRightIcon } from "@primer/octicons-react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import DocumentSelector from "../components/DocumentSelector";
-import DragAndDrop from "../components/DragAndDrop";
-import Gallery from "../components/Gallery";
 
-const FileSelectorPage = () => {
+const ResultsPage = () => {
   return (
     <div className="container">
       <div className="mt-5 pb-5">
@@ -28,33 +26,36 @@ const FileSelectorPage = () => {
 
       {/* title */}
       <div className="mt-4">
-        <p className="h1">Upload or Select a file</p>
+        <p className="h1">File Successfully read!</p>
       </div>
 
       <div className="mt-3">
         <div className="elevated">
           <div className="row justify-content-start row-eq-height">
-            <div className="col-md-3 left-elevated-column">
-              <DragAndDrop />
-            </div>
-            <div className="col-md-9 right-elevated-column">
-              <Gallery />
-            </div>
+            <div className="col-md-3 left-elevated-column">IMAGE</div>
+            <div className="col-md-9 right-elevated-column">RESULTS</div>
           </div>
         </div>
       </div>
 
       {/* submit */}
       <div className="mt-5">
-        <div className="row justify-content-end">
-          <div className="mr-3">
-            <Link to="/results">
+        <div className="row justify-content-around">
+          <div className="col mr-3">
+            <Link to="/fileselector">
               <button type="button" className="btn btn-primary">
-                &nbsp; Read Image &nbsp;
-                <ArrowRightIcon size={16} />
+                &nbsp; Back &nbsp;
+                <ArrowLeftIcon size={16} />
               </button>
             </Link>
           </div>
+
+{/*           <div className="col mr-3">
+            <button type="button" className="btn btn-primary">
+              &nbsp; Complete &nbsp;
+              <ArrowRightIcon size={16} />
+            </button>
+          </div> */}
         </div>
       </div>
 
@@ -66,4 +67,4 @@ const FileSelectorPage = () => {
   );
 };
 
-export default FileSelectorPage;
+export default ResultsPage;

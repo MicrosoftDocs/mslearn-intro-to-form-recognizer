@@ -15,7 +15,6 @@ const Gallery = () => {
         {selectedDocumentType === "Invoices" ? "Invoice" : "Receipt"} Gallery
       </p>
       <div className="gallery-grid">
-        {/* TODO: Break into rows and add styling + fitting into box */}
         <div className="row row-equal-height align-items-center justify-content-start">
           {images.map((image, index) => {
             const uri = getImageUriFromFileName(image.filename);

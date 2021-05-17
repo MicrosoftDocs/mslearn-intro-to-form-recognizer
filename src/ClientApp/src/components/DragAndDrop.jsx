@@ -1,6 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { useDropzone } from "react-dropzone";
+
+
+
+// TODO: give some sort of visual feedback when a file is successfuly dropped
 
 // Dropzone styling
 const baseStyle = {
@@ -94,14 +98,6 @@ const DragAndDrop = (props) => {
       {/* <aside>{thumbs}</aside> */}
     </section>
   );
-};
-
-DragAndDrop.propTypes = {
-  menuStyle: PropTypes.string,
-};
-// Set default props
-DragAndDrop.defaultProps = {
-  menuStyle: "tabs",
 };
 
 export default DragAndDrop;

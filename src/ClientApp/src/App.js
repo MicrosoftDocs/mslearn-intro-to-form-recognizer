@@ -13,6 +13,7 @@ import { getDataUrlFromFile, getImageUriFromFileName } from "./utility";
 import Footer from "./components/Footer";
 import LandingPage from "./pages/LandingPage";
 import FileSelectorPage from "./pages/FileSelectorPage";
+import ResultsPage from "./pages/ResultsPage";
 
 const App = () => {
   return (
@@ -25,6 +26,10 @@ const App = () => {
 
           <Route path="/fileselector" exact>
             <FileSelectorPage />
+          </Route>
+
+          <Route path="/results" exact>
+            <ResultsPage />
           </Route>
         </main>
         <Footer />
