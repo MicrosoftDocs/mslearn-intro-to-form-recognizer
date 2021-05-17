@@ -20,14 +20,14 @@ const Gallery = () => {
             const uri = getImageUriFromFileName(image.filename);
             const isSelected = uri === selectedImage?.uri;
             return (
-              <div
+              <div key={image.name}
                 className={`col-xs-1 col-md-3 gallery-item ${
                   isSelected ? "gallery-item--selected" : ""
                 }`}
                 onClick={() => onSelectImage(image)}
               >
                 <center>
-                  <a key={image.name} className="btn rounded  no-outline">
+                  <a className="btn rounded no-outline">
                     <img
                       src={uri}
                       alt={image.name}

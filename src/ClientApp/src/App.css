@@ -229,9 +229,9 @@ footer {
 }
 
 .gallery-grid {
-  max-height: 500px;
+  max-height: 640px;
   margin-top: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   padding-left: 15px;
 }

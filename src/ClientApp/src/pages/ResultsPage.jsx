@@ -1,8 +1,30 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "@primer/octicons-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import DocumentSelector from "../components/DocumentSelector";
+import { useStore } from "../store/global.store";
+
+// TODO: validade the existence of a selected file or image
 
 const ResultsPage = () => {
+  const [requireSelection, setRequireSelection] = useState(false);
+  const selectedImage = useStore((state) => state.selectedImage);
+  console.log(selectedImage);
+
+  useEffect(() => {
+    // validate that we have an image selected or uploaded
+      const { uri, file, dataUri } = selectedImage;
+    //   console.log(selectedImage)
+    //   console.log(uri, file, dataUri)
+    if (!uri && !file && !dataUri) {
+      setRequireSelection(true);
+    }
+  }, [selectedImage]);
+
+  if (requireSelection) {
+    return <p>Make user select something! redirect to file selection</p>;
+  }
+
   return (
     <div className="container">
       <div className="mt-5 pb-5">
@@ -50,7 +72,7 @@ const ResultsPage = () => {
             </Link>
           </div>
 
-{/*           <div className="col mr-3">
+          {/*           <div className="col mr-3">
             <button type="button" className="btn btn-primary">
               &nbsp; Complete &nbsp;
               <ArrowRightIcon size={16} />
