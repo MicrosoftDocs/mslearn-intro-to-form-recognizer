@@ -5,7 +5,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const LandingPage = () => {
   return (
     <div className="row m-0">
-      <div className="col-sm main-bg-div"></div>
+      <div className="col-sm landing-left-col"></div>
       <div className="col-sm-6">
         <div className="container-fluid">
           {/* logo */}
