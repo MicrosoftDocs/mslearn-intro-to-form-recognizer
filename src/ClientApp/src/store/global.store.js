@@ -4,11 +4,11 @@ import { getDataUrlFromFile, getImageUriFromFileName } from "../utility";
 // ---------------------------------------------------------------
 // Global Methods (are here because they manipulate global state)
 // ---------------------------------------------------------------
-const setActiveTab = (tabName) => {
+const setSelectedDocumentType = (tabName) => {
   const state = useStore.getState();
   useStore.setState({
     ...state,
-    activeTab: tabName,
+    selectedDocumentType: tabName,
   });
 };
 
@@ -25,12 +25,12 @@ const onSelectImage = (image) => {
 // ---------------------------------------------------------------
 // defines a store, setting the intial state
 export const useStore = create((set, get) => ({
-  activeTab: "Invoices",
+  selectedDocumentType: "Invoices",
   selectedImage: {
     uri: undefined,
     file: undefined,
     dataUri: undefined,
   },
-  setActiveTab: setActiveTab,
+  setSelectedDocumentType: setSelectedDocumentType,
   onSelectImage: onSelectImage,
 }));

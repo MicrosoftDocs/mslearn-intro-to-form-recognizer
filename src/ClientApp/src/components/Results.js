@@ -96,12 +96,12 @@ const ReceiptsResultTable = ({
 );
 
 export const Results = ({ selectedModel, imageData }) => {
-  const [activeTab, setActiveTab] = useState("information");
+  const [selectedDocumentType, setSelectedDocumentType] = useState("information");
   if (!imageData?.fields) {
     return null;
   }
   const renderResults = () => {
-    switch (activeTab) {
+    switch (selectedDocumentType) {
       case "json": {
         return (
           <div>
@@ -130,10 +130,10 @@ export const Results = ({ selectedModel, imageData }) => {
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <button
-              onClick={() => setActiveTab("information")}
+              onClick={() => setSelectedDocumentType("information")}
               className={className({
                 "nav-link": true,
-                active: activeTab === "information",
+                active: selectedDocumentType === "information",
               })}
               aria-current="page"
             >
@@ -142,10 +142,10 @@ export const Results = ({ selectedModel, imageData }) => {
           </li>
           <li className="nav-item">
             <button
-              onClick={() => setActiveTab("json")}
+              onClick={() => setSelectedDocumentType("json")}
               className={className({
                 "nav-link": true,
-                active: activeTab === "json",
+                active: selectedDocumentType === "json",
               })}
             >
               Json

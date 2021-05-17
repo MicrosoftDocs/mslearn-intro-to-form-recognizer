@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { useStore } from "../store/global.store";
 
 const DocumentSelector = (props) => {
-  const activeTab = useStore((state) => state.activeTab);
-  const setActiveTab = useStore((state) => state.setActiveTab);
+  const selectedDocumentType = useStore((state) => state.selectedDocumentType);
+  const setSelectedDocumentType = useStore((state) => state.setSelectedDocumentType);
 
   if (props.menuStyle == "links") {
     // return the selector as links
@@ -12,10 +12,10 @@ const DocumentSelector = (props) => {
       <div className="linkedDocumentSelector">
         <a
           href="#"
-          onClick={() => setActiveTab("Invoices")}
+          onClick={() => setSelectedDocumentType("Invoices")}
           className={className({
             "linked-menu-item": true,
-            "active-linked-menu-item": activeTab === "Invoices",
+            "active-linked-menu-item": selectedDocumentType === "Invoices",
           })}
         >
           Invoices
@@ -23,10 +23,10 @@ const DocumentSelector = (props) => {
         &nbsp;&nbsp; | &nbsp;&nbsp;
         <a
           href="#"
-          onClick={() => setActiveTab("Receipts")}
+          onClick={() => setSelectedDocumentType("Receipts")}
           className={className({
             "linked-menu-item": true,
-            "active-linked-menu-item": activeTab === "Receipts",
+            "active-linked-menu-item": selectedDocumentType === "Receipts",
           })}
         >
           Receipts
@@ -40,10 +40,10 @@ const DocumentSelector = (props) => {
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <button
-              onClick={() => setActiveTab("Invoices")}
+              onClick={() => setSelectedDocumentType("Invoices")}
               className={className({
                 "nav-link": true,
-                active: activeTab === "Invoices",
+                active: selectedDocumentType === "Invoices",
               })}
               aria-current="page"
             >
@@ -52,10 +52,10 @@ const DocumentSelector = (props) => {
           </li>
           <li className="nav-item">
             <button
-              onClick={() => setActiveTab("Receipts")}
+              onClick={() => setSelectedDocumentType("Receipts")}
               className={className({
                 "nav-link": true,
-                active: activeTab === "Receipts",
+                active: selectedDocumentType === "Receipts",
               })}
             >
               Receipts

@@ -4,15 +4,15 @@ import { INVOICES, RECEIPTS } from "../data";
 import { getImageUriFromFileName } from "../utility";
 
 const Gallery = () => {
-  const activeTab = useStore((state) => state.activeTab);
+  const selectedDocumentType = useStore((state) => state.selectedDocumentType);
   const selectedImage = useStore((state) => state.selectedImage);
   const onSelectImage = useStore((state) => state.onSelectImage);
-  const images = activeTab === "Invoices" ? INVOICES : RECEIPTS;
+  const images = selectedDocumentType === "Invoices" ? INVOICES : RECEIPTS;
 
   return (
     <div className="gallery-container">
       <p className="h4">
-        {activeTab === "Invoices" ? "Invoice" : "Receipt"} Gallery
+        {selectedDocumentType === "Invoices" ? "Invoice" : "Receipt"} Gallery
       </p>
       <div className="gallery-grid">
         {/* TODO: Break into rows and add styling + fitting into box */}
