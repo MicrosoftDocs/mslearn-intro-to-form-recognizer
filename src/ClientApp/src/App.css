@@ -207,6 +207,7 @@ footer {
 }
 
 .elevated {
+  margin-top: 30px;
   padding-top: 60px;
   padding-bottom: 30px;
   padding-left: 30px;
@@ -230,4 +231,11 @@ footer {
 }
 .gallery-grid {
   margin-top: 20px;
+}
+
+.hr2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: solid 1px #707070;
 }

@@ -23,11 +23,11 @@ const FileSelectorPage = () => {
 
       {/* separator */}
       <div className="mt-4">
-        <hr size="2" />
+        <hr className="hr2" />
       </div>
 
       {/* title */}
-      <div className="mt-3">
+      <div className="mt-4">
         <p className="h1">Upload or Select a file</p>
       </div>
 
