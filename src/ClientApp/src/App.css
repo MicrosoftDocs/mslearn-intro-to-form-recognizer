@@ -217,11 +217,11 @@ footer {
   border: solid 1px #dedede;
 }
 
-.drag-and-drop-column {
+.left-elevated-column {
   padding-right: 20px;
 }
 
-.gallery-column {
+.right-elevated-column {
   border-left: solid 1px #b2b2b2;
   padding-left: 20px;
 }
