@@ -231,7 +231,10 @@ footer {
   min-height: 540px;
 }
 .gallery-grid {
+  max-height: 500px;
   margin-top: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .hr2 {

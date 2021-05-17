@@ -16,28 +16,31 @@ const Gallery = () => {
       </p>
       <div className="gallery-grid">
         {/* TODO: Break into rows and add styling + fitting into box */}
-        <div>
-          {images.map((image) => {
+        <div className="row row-equal-height align-items-center justify-content-start">
+          {images.map((image, index) => {
             const uri = getImageUriFromFileName(image.filename);
             const isSelected = uri === selectedImage?.uri;
             return (
-              <button
-                key={image.name}
-                className={`btn-image pl-0 btn btn-link bg-image rounded ${
-                  isSelected ? "btn-image--selected" : ""
-                }`}
-                onClick={() => onSelectImage(image)}
-              >
-                <img
-                  style={{ width: "108px" }}
-                  src={uri}
-                  alt={image.name}
-                  className="img-thumbnail"
-                ></img>
-              </button>
+              <div className="col-sm-2 col-lg-3">
+                <button
+                  key={image.name}
+                  className={`btn-image pl-0 btn btn-link bg-image rounded ${
+                    isSelected ? "btn-image--selected" : ""
+                  }`}
+                  onClick={() => onSelectImage(image)}
+                >
+                  <img
+                    style={{ width: "108px" }}
+                    src={uri}
+                    alt={image.name}
+                    className="img-thumbnail"
+                  ></img>
+                </button>
+              </div>
             );
           })}
         </div>
+        {/* row */}
       </div>
     </div>
   );
