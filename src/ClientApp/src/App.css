@@ -63,9 +63,6 @@
 body {
   font-family: "Segoe UI", sans-serif !important;
 }
-.btn-image--selected img {
-  border: 1px solid black;
-}
 
 .btn {
   border-radius: 0;
@@ -230,11 +227,13 @@ footer {
 .drag-and-drop-container {
   min-height: 540px;
 }
+
 .gallery-grid {
   max-height: 500px;
   margin-top: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding-left: 15px;
 }
 
 .hr2 {
@@ -242,4 +241,33 @@ footer {
   margin-bottom: 1rem;
   border: 0;
   border-top: solid 1px #707070;
+}
+
+.gallery-item {
+  max-width: 180px;
+  height: 170px;
+  border-radius: 10px;
+  margin: 8px;
+  padding: 20px 0;
+  border: solid 1px #cccccc;
+  /* background-color: cyan; */
+  align-self: center;
+}
+
+.gallery-item--selected {
+  box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
+  border: solid 1px #0078d4;
+}
+
+.img-thumbnail {
+  width: 108px;
+  /* height: auto; */
+  box-shadow: 0 3px 6px 0 #cccccc;
+}
+
+/* should help with out of ratio images, but doesn't */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }

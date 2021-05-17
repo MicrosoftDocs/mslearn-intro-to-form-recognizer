@@ -34,10 +34,10 @@ const FileSelectorPage = () => {
       <div className="mt-3">
         <div className="elevated">
           <div className="row justify-content-start row-eq-height">
-            <div className="col-md-4 left-elevated-column">
+            <div className="col-md-3 left-elevated-column">
               <DragAndDrop />
             </div>
-            <div className="col-md-8 right-elevated-column">
+            <div className="col-md-9 right-elevated-column">
               <Gallery />
             </div>
           </div>

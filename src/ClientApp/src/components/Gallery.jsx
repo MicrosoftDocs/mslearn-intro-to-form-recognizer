@@ -21,21 +21,21 @@ const Gallery = () => {
             const uri = getImageUriFromFileName(image.filename);
             const isSelected = uri === selectedImage?.uri;
             return (
-              <div className="col-sm-2 col-lg-3">
-                <button
-                  key={image.name}
-                  className={`btn-image pl-0 btn btn-link bg-image rounded ${
-                    isSelected ? "btn-image--selected" : ""
-                  }`}
-                  onClick={() => onSelectImage(image)}
-                >
-                  <img
-                    style={{ width: "108px" }}
-                    src={uri}
-                    alt={image.name}
-                    className="img-thumbnail"
-                  ></img>
-                </button>
+              <div
+                className={`col-xs-1 col-md-3 gallery-item ${
+                  isSelected ? "gallery-item--selected" : ""
+                }`}
+                onClick={() => onSelectImage(image)}
+              >
+                <center>
+                  <a key={image.name} className="btn rounded  no-outline">
+                    <img
+                      src={uri}
+                      alt={image.name}
+                      className="img-thumbnail"
+                    ></img>
+                  </a>
+                </center>
               </div>
             );
           })}
