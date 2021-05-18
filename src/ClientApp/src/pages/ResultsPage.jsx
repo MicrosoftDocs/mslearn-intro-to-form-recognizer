@@ -110,7 +110,7 @@ const ResultsPage = () => {
 
       {/* title */}
       <div className="mt-4">
-        <p className="h1">File Successfully read!</p>
+        <p className="h1">{hasLoaded && !hasError ? "File Successfully read!" : "Processing..."}</p>
       </div>
 
       <div className="mt-3">
