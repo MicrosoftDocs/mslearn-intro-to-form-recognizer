@@ -20,6 +20,7 @@ const onSelectImage = (image) => {
     selectedImage: { uri, file: undefined, dataUri: undefined },
   });
 };
+
 // ---------------------------------------------------------------
 // Global State vars
 // ---------------------------------------------------------------

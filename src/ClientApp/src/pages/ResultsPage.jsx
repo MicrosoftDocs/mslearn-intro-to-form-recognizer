@@ -5,10 +5,7 @@ import DocumentSelector from "../components/DocumentSelector";
 import { useStore } from "../store/global.store";
 import { useSnackbar } from "notistack";
 import { useHistory } from "react-router-dom";
-import {
-  Results,
-  AnalysedImage,
-} from "../components";
+import { Results, AnalysedImage } from "../components";
 
 // TODO: validade the existence of a selected file or image
 
@@ -16,12 +13,14 @@ const ResultsPage = () => {
   const history = useHistory();
   const [processingStatus, setProcessingStatus] = useState("idle");
   const [imageData, setImageData] = useState(undefined);
-  const selectedModel = useStore((state) => state.selectedDocumentType.toLowerCase());
+  const selectedModel = useStore((state) =>
+    state.selectedDocumentType.toLowerCase()
+  );
   const selectedImage = useStore((state) => state.selectedImage);
   const isLoading = processingStatus === "pending";
   const hasError = processingStatus === "failure";
   const hasLoaded =
-  processingStatus === "success" || processingStatus === "failure";
+    processingStatus === "success" || processingStatus === "failure";
   const { enqueueSnackbar } = useSnackbar();
   // console.log(selectedImage);
 
@@ -127,7 +126,12 @@ const ResultsPage = () => {
               <div className="col-6">
                 {isLoading ? <div className="loader">Processing...</div> : null}
                 {hasLoaded && hasError ? <p>Something went wrong</p> : null}
-                <Results selectedModel={selectedModel} imageData={imageData} />
+                {hasLoaded && !hasError ? (
+                  <Results
+                    selectedModel={selectedModel}
+                    imageData={imageData}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
