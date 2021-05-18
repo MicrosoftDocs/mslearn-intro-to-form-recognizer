@@ -86,7 +86,7 @@ const DragAndDrop = (props) => {
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <div className="drag-and-drop-container row align-items-center">
-          <p className="h4">
+          <p className="h4" align="center">
             Drop file to upload or{" "}
             <a href="#" className="active-linked-menu-item">
               browse
