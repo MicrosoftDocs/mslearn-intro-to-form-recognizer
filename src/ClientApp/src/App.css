@@ -101,15 +101,6 @@ body {
   background-color: #0078d4;
 }
 
-/* nav links for Document Selector */
-/* 
-  .navbar .navbar-nav .nav-item .nav-link {
-    padding: 0 1em;
-  }
-  .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
-    border-right: 1px solid #a2a2a2;
-  }  
-  */
 
 .text {
   color: white;
@@ -179,7 +170,7 @@ footer {
 .landing-left-col {
   min-height: 880px;
   /* max-width: 703px; */
-  background-image: url("./images/dude-with-notebook.png");
+  background-image: url("./images/desktop-image.png");
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-color: pink;
