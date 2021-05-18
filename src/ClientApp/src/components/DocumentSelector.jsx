@@ -1,10 +1,24 @@
 import className from "classnames";
 import PropTypes from "prop-types";
 import { useStore } from "../store/global.store";
+import { useHistory } from "react-router-dom";
 
 const DocumentSelector = (props) => {
+  const history = useHistory();
   const selectedDocumentType = useStore((state) => state.selectedDocumentType);
-  const setSelectedDocumentType = useStore((state) => state.setSelectedDocumentType);
+  const setSelectedDocumentType = useStore(
+    (state) => state.setSelectedDocumentType
+  );
+
+  /**
+   * Sets the selected document type in globals state
+   * goes fo File Selector component so user may choose a document
+   * @param {*} documentType 
+   */
+  const onChangeDocumentType = (documentType) => {
+    setSelectedDocumentType(documentType);
+    history.push("/fileselector");
+  };
 
   if (props.menuStyle == "links") {
     // return the selector as links
@@ -12,7 +26,7 @@ const DocumentSelector = (props) => {
       <div className="linkedDocumentSelector">
         <a
           href="#"
-          onClick={() => setSelectedDocumentType("Invoices")}
+          onClick={() => onChangeDocumentType("Invoices")}
           className={className({
             "linked-menu-item": true,
             "active-linked-menu-item": selectedDocumentType === "Invoices",
@@ -23,7 +37,7 @@ const DocumentSelector = (props) => {
         &nbsp;&nbsp; | &nbsp;&nbsp;
         <a
           href="#"
-          onClick={() => setSelectedDocumentType("Receipts")}
+          onClick={() => onChangeDocumentType("Receipts")}
           className={className({
             "linked-menu-item": true,
             "active-linked-menu-item": selectedDocumentType === "Receipts",
