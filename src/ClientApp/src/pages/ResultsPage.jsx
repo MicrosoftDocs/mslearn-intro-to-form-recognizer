@@ -123,7 +123,7 @@ const ResultsPage = () => {
             </div>
             <div className="col-md-9 right-elevated-column">
               {" "}
-              <div className="col-6">
+              <div className="">
                 {isLoading ? <div className="loader">Processing...</div> : null}
                 {hasLoaded && hasError ? <p>Something went wrong</p> : null}
                 {hasLoaded && !hasError ? (

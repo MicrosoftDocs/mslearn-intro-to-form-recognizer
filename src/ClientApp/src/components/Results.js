@@ -1,5 +1,6 @@
 import { useState } from "react";
 import className from "classnames";
+import { capitalize } from "../utility";
 
 const InvoiceResultTable = ({
   fields: {
@@ -96,12 +97,12 @@ const ReceiptsResultTable = ({
 );
 
 export const Results = ({ selectedModel, imageData }) => {
-  const [selectedDocumentType, setSelectedDocumentType] = useState("information");
+  const [activeTab, setActiveTab] = useState("information");
   if (!imageData?.fields) {
     return null;
   }
   const renderResults = () => {
-    switch (selectedDocumentType) {
+    switch (activeTab) {
       case "json": {
         return (
           <div>
@@ -121,37 +122,41 @@ export const Results = ({ selectedModel, imageData }) => {
       }
     }
   };
-  const informationTitle = `${selectedModel
-    .charAt(0)
-    .toUpperCase()}${selectedModel.slice(1)} information`;
+  const documentName = capitalize(selectedModel).slice(0, -1);
+  const informationTitle = `Data found in ${documentName}`;
   return (
     <>
-      <div>
-        <ul className="nav nav-tabs">
-          <li className="nav-item">
-            <button
-              onClick={() => setSelectedDocumentType("information")}
-              className={className({
-                "nav-link": true,
-                active: selectedDocumentType === "information",
-              })}
-              aria-current="page"
-            >
-              {informationTitle}
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              onClick={() => setSelectedDocumentType("json")}
-              className={className({
-                "nav-link": true,
-                active: selectedDocumentType === "json",
-              })}
-            >
-              Json
-            </button>
-          </li>
-        </ul>
+      <div className="d-flex justify-content-between mb-4 ">
+        <div ml-3>
+          <p className="h4">{informationTitle}</p>
+        </div>
+        <div className="linkedSelector">
+          <button
+            type="button"
+            onClick={() => setActiveTab("information")}
+            className={className({
+              "btn": true,
+              "btn-link": true,
+              "linked-menu-item": true,
+              "active-linked-menu-item": activeTab === "information",
+            })}
+          >
+            {documentName} Information
+          </button>
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          <button
+            type="button"
+            onClick={() => setActiveTab("json")}
+            className={className({
+              "btn": true,
+              "btn-link": true,
+              "linked-menu-item": true,
+              "active-linked-menu-item": activeTab === "json",
+            })}
+          >
+            JSON
+          </button>
+        </div>
       </div>
       {renderResults()}
     </>
