@@ -26,8 +26,8 @@ const onSelectImage = (image) => {
 // defines a store, setting the intial state
 export const useStore = create((set, get) => ({
   selectedDocumentType: "Invoices",
-  processingStatus: "idle",
-  imageData: undefined,
+  // processingStatus: "idle",
+  // imageData: undefined,
   selectedImage: {
     uri: undefined,
     file: undefined,

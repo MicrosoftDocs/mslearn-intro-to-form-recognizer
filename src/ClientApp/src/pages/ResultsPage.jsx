@@ -5,14 +5,27 @@ import DocumentSelector from "../components/DocumentSelector";
 import { useStore } from "../store/global.store";
 import { useSnackbar } from "notistack";
 import { useHistory } from "react-router-dom";
+import {
+  ImageSelection,
+  Results,
+  AnalysedImage,
+  ModelSelector,
+} from "../components";
 
 // TODO: validade the existence of a selected file or image
 
 const ResultsPage = () => {
   const history = useHistory();
+  const [processingStatus, setProcessingStatus] = useState("idle");
+  const [imageData, setImageData] = useState(undefined);
+  const selectedDocumentType = useStore((state) => state.selectedDocumentType);
   const selectedImage = useStore((state) => state.selectedImage);
+  const isLoading = processingStatus === "pending";
+  const hasError = processingStatus === "failure";
+  const hasLoaded =
+  processingStatus === "success" || processingStatus === "failure";
   const { enqueueSnackbar } = useSnackbar();
-  console.log(selectedImage);
+  // console.log(selectedImage);
 
   useEffect(() => {
     // validate that we have an image selected or uploaded
@@ -26,6 +39,51 @@ const ResultsPage = () => {
       });
       history.goBack();
     }
+
+    // if we passed the basic validation, hit the API
+    const analyseSelectedImage = async () => {
+      if (!selectedImage.uri && !selectedImage.file) {
+        setProcessingStatus("idle");
+        return;
+      }
+      try {
+        setProcessingStatus("pending");
+
+        if (selectedImage.uri) {
+          const body = {
+            uri: selectedImage.uri,
+            model: selectedDocumentType.toLowerCase(),
+          };
+          const response = await fetch("form-recognizer", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+          });
+          const data = await response.json();
+          console.log(data);
+          setImageData(data);
+        } else if (selectedImage.file) {
+          const formData = new FormData();
+          formData.append("file", selectedImage.file);
+          formData.append("model", selectedDocumentType.toLowerCase());
+          const response = await fetch("form-recognizer", {
+            method: "POST",
+            body: formData,
+          });
+          const data = await response.json();
+          setImageData(data);
+        } else {
+          setProcessingStatus("failure");
+        }
+
+        setProcessingStatus("success");
+      } catch {
+        setProcessingStatus("failure");
+      }
+    };
+    analyseSelectedImage();
   }, [selectedImage]);
 
   // if (requireSelection) {
@@ -62,7 +120,16 @@ const ResultsPage = () => {
         <div className="elevated">
           <div className="row justify-content-start row-eq-height">
             <div className="col-md-3 left-elevated-column">IMAGE</div>
-            <div className="col-md-9 right-elevated-column">RESULTS</div>
+            <div className="col-md-9 right-elevated-column">
+              {" "}
+              <div className="col-6">
+                {isLoading ? <div className="loader">Processing...</div> : null}
+                {hasLoaded && hasError ? <p>Something went wrong</p> : null}
+                {hasLoaded ? (
+                  <AnalysedImage selectedImage={selectedImage} />
+                ) : null}
+              </div>
+            </div>
           </div>
         </div>
       </div>
