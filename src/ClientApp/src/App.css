@@ -260,8 +260,9 @@ footer {
   width: 110px;
   height: 110px;
   opacity: 0.35;
-  position: relative;
+  margin-bottom: 30px;
   display: inline;
+
 }
 
 .drag-and-drop-container {
