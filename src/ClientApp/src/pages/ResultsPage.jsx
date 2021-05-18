@@ -3,27 +3,34 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import DocumentSelector from "../components/DocumentSelector";
 import { useStore } from "../store/global.store";
+import { useSnackbar } from "notistack";
+import { useHistory } from "react-router-dom";
 
 // TODO: validade the existence of a selected file or image
 
 const ResultsPage = () => {
-  const [requireSelection, setRequireSelection] = useState(false);
+  const history = useHistory();
   const selectedImage = useStore((state) => state.selectedImage);
+  const { enqueueSnackbar } = useSnackbar();
   console.log(selectedImage);
 
   useEffect(() => {
     // validate that we have an image selected or uploaded
-      const { uri, file, dataUri } = selectedImage;
+    const { uri, file, dataUri } = selectedImage;
     //   console.log(selectedImage)
     //   console.log(uri, file, dataUri)
     if (!uri && !file && !dataUri) {
-      setRequireSelection(true);
+      enqueueSnackbar(`Error! You need to select an image or upload a file.`, {
+        variant: "error",
+        preventDuplicate: true,
+      });
+      history.goBack();
     }
   }, [selectedImage]);
 
-  if (requireSelection) {
-    return <p>Make user select something! redirect to file selection</p>;
-  }
+  // if (requireSelection) {
+  //   return <p>Make user select something! redirect to file selection</p>;
+  // }
 
   return (
     <div className="container">
