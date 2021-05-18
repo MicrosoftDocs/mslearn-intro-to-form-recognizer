@@ -6,10 +6,8 @@ import { useStore } from "../store/global.store";
 import { useSnackbar } from "notistack";
 import { useHistory } from "react-router-dom";
 import {
-  ImageSelection,
   Results,
   AnalysedImage,
-  ModelSelector,
 } from "../components";
 
 // TODO: validade the existence of a selected file or image
@@ -18,7 +16,7 @@ const ResultsPage = () => {
   const history = useHistory();
   const [processingStatus, setProcessingStatus] = useState("idle");
   const [imageData, setImageData] = useState(undefined);
-  const selectedDocumentType = useStore((state) => state.selectedDocumentType);
+  const selectedModel = useStore((state) => state.selectedDocumentType.toLowerCase());
   const selectedImage = useStore((state) => state.selectedImage);
   const isLoading = processingStatus === "pending";
   const hasError = processingStatus === "failure";
@@ -52,7 +50,7 @@ const ResultsPage = () => {
         if (selectedImage.uri) {
           const body = {
             uri: selectedImage.uri,
-            model: selectedDocumentType.toLowerCase(),
+            model: selectedModel,
           };
           const response = await fetch("form-recognizer", {
             method: "POST",
@@ -67,7 +65,7 @@ const ResultsPage = () => {
         } else if (selectedImage.file) {
           const formData = new FormData();
           formData.append("file", selectedImage.file);
-          formData.append("model", selectedDocumentType.toLowerCase());
+          formData.append("model", selectedModel);
           const response = await fetch("form-recognizer", {
             method: "POST",
             body: formData,
@@ -119,15 +117,17 @@ const ResultsPage = () => {
       <div className="mt-3">
         <div className="elevated">
           <div className="row justify-content-start row-eq-height">
-            <div className="col-md-3 left-elevated-column">IMAGE</div>
+            <div className="col-md-3 left-elevated-column">
+              {hasLoaded ? (
+                <AnalysedImage selectedImage={selectedImage} />
+              ) : null}
+            </div>
             <div className="col-md-9 right-elevated-column">
               {" "}
               <div className="col-6">
                 {isLoading ? <div className="loader">Processing...</div> : null}
                 {hasLoaded && hasError ? <p>Something went wrong</p> : null}
-                {hasLoaded ? (
-                  <AnalysedImage selectedImage={selectedImage} />
-                ) : null}
+                <Results selectedModel={selectedModel} imageData={imageData} />
               </div>
             </div>
           </div>
