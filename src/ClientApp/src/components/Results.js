@@ -106,7 +106,7 @@ export const Results = ({ selectedModel, imageData }) => {
       case "json": {
         return (
           <div>
-            <pre className="w-100 bg-light p-4" style={{ maxHeight: "500px" }}>
+            <pre className="w-100 bg-light p-4 json-pre">
               <code>{JSON.stringify(imageData, undefined, 2)}</code>
             </pre>
           </div>

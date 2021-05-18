@@ -118,7 +118,7 @@ const ResultsPage = () => {
           <div className="row justify-content-start row-eq-height">
             <div className="col-md-3 left-elevated-column">
               {hasLoaded ? (
-                <AnalysedImage selectedImage={selectedImage} />
+                <AnalysedImage selectedImage={selectedImage} selectedModel={ selectedModel}/>
               ) : null}
             </div>
             <div className="col-md-9 right-elevated-column">
