@@ -101,7 +101,6 @@ body {
   background-color: #0078d4;
 }
 
-
 .text {
   color: white;
   font-size: 20px;
@@ -214,10 +213,6 @@ footer {
   padding-left: 20px;
 }
 
-.drag-and-drop-container {
-  min-height: 540px;
-}
-
 .gallery-grid {
   max-height: 640px;
   margin-top: 20px;
@@ -240,7 +235,6 @@ footer {
   margin: 15px;
   padding: 20px 0;
   border: solid 1px #cccccc;
-  /* background-color: cyan; */
   align-self: center;
 }
 
@@ -260,4 +254,19 @@ footer {
   content: "";
   clear: both;
   display: table;
+}
+
+.cloud-upload-icon {
+  width: 110px;
+  height: 110px;
+  opacity: 0.35;
+  position: relative;
+  display: inline;
+}
+
+.drag-and-drop-container {
+  min-height: 540px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
