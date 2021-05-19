@@ -34,16 +34,17 @@ const rejectStyle = {
 };
 
 const DragAndDrop = (props) => {
-  const [files, setFiles] = useState([]);
+  // const [files, setFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
-    setFiles(
-      acceptedFiles.map((file) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
-      )
-    );
+    console.log(acceptedFiles);
+    // setFiles(
+    //   acceptedFiles.map((file) =>
+    //     Object.assign(file, {
+    //       preview: URL.createObjectURL(file),
+    //     })
+    //   )
+    // );
   }, []);
 
   const {
@@ -67,22 +68,22 @@ const DragAndDrop = (props) => {
     [isDragActive, isDragReject, isDragAccept]
   );
 
-  const thumbs = files.map((file) => (
-    <div key={file.name}>
-      <img src={file.preview} alt={file.name} />
-    </div>
-  ));
+  // const thumbs = files.map((file) => (
+  //   <div key={file.name}>
+  //     <img src={file.preview} alt={file.name} />
+  //   </div>
+  // ));
 
   // clean up
-  useEffect(
-    () => () => {
-      files.forEach((file) => URL.revokeObjectURL(file.preview));
-    },
-    [files]
-  );
+  // useEffect(
+  //   () => () => {
+  //     files.forEach((file) => URL.revokeObjectURL(file.preview));
+  //   },
+  //   [files]
+  // );
 
   return (
-    <section>
+
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <div className="drag-and-drop-container row align-items-center">
@@ -114,9 +115,7 @@ const DragAndDrop = (props) => {
           </div>
         </div>
       </div>
-      {/* no image previews for now */}
-      {/* <aside>{thumbs}</aside> */}
-    </section>
+
   );
 };
 
