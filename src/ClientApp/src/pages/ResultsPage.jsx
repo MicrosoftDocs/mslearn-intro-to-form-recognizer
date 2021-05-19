@@ -7,8 +7,6 @@ import { useSnackbar } from "notistack";
 import { useHistory } from "react-router-dom";
 import { Results, AnalysedImage } from "../components";
 
-// TODO: validade the existence of a selected file or image
-
 const ResultsPage = () => {
   const history = useHistory();
   const [processingStatus, setProcessingStatus] = useState("idle");
@@ -27,8 +25,6 @@ const ResultsPage = () => {
   useEffect(() => {
     // validate that we have an image selected or uploaded
     const { uri, file, dataUri } = selectedImage;
-    //   console.log(selectedImage)
-    //   console.log(uri, file, dataUri)
     if (!uri && !file && !dataUri) {
       enqueueSnackbar(`Error! You need to select an image or upload a file.`, {
         variant: "error",
@@ -83,10 +79,6 @@ const ResultsPage = () => {
     analyseSelectedImage();
   }, [selectedImage]);
 
-  // if (requireSelection) {
-  //   return <p>Make user select something! redirect to file selection</p>;
-  // }
-
   return (
     <div className="container">
       <div className="mt-5 pb-5">
@@ -110,7 +102,9 @@ const ResultsPage = () => {
 
       {/* title */}
       <div className="mt-4">
-        <p className="h1">{hasLoaded && !hasError ? "File Successfully read!" : "Processing..."}</p>
+        <p className="h1">
+          {hasLoaded && !hasError ? "File Successfully read!" : "Processing..."}
+        </p>
       </div>
 
       <div className="mt-3">
