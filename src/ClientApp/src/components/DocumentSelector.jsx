@@ -20,7 +20,7 @@ const DocumentSelector = (props) => {
     history.push("/fileselector");
   };
 
-  if (props.menuStyle == "links") {
+  if (props.menuStyle === "links") {
     // return the selector as links
     return (
       <div className="linkedSelector">
