@@ -24,15 +24,19 @@ const baseStyle = {
 };
 
 const activeStyle = {
-  borderColor: "#2196f3",
+  borderColor: "#406fdb",
+  borderStyle: "solid",
+  borderWidth: 2,
 };
 
 const acceptStyle = {
-  borderColor: "#00e676",
+  borderColor: "#1bc101",
+  borderWidth: 2,
 };
 
 const rejectStyle = {
   borderColor: "#ff1744",
+  borderWidth: 2,
 };
 
 const DragAndDrop = (props) => {
@@ -68,8 +72,8 @@ const DragAndDrop = (props) => {
   );
 
   const {
-    acceptedFiles,
-    fileRejections,
+    // acceptedFiles,
+    // fileRejections,
     getRootProps,
     getInputProps,
     isDragActive,
@@ -90,25 +94,6 @@ const DragAndDrop = (props) => {
     }),
     [isDragActive, isDragReject, isDragAccept]
   );
-
-  // const acceptedFileItems = acceptedFiles.map((file) => (
-  //   <li key={file.path}>
-  //     {file.path} - {file.size} bytes
-  //   </li>
-  // ));
-
-  // const fileRejectionItems = fileRejections.map(({ file, errors }) => {
-  //   return (
-  //     <li key={file.path}>
-  //       {file.path} - {file.size} bytes
-  //       <ul>
-  //         {errors.map((e) => (
-  //           <li key={e.code}>{e.message}</li>
-  //         ))}
-  //       </ul>
-  //     </li>
-  //   );
-  // });
 
   return (
     <div {...getRootProps({ style })}>
