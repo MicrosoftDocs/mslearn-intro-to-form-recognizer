@@ -26,7 +26,7 @@ const ResultsPage = () => {
     // validate that we have an image selected or uploaded
     const { uri, file, dataUri } = selectedImage;
     if (!uri && !file && !dataUri) {
-      enqueueSnackbar(`Error! You need to select an image or upload a file.`, {
+      enqueueSnackbar(`Please select an image or upload a file.`, {
         variant: "error",
         preventDuplicate: true,
       });
@@ -77,6 +77,10 @@ const ResultsPage = () => {
       }
     };
     analyseSelectedImage();
+
+    return () => {
+      //cleanup due to warning;
+    };
   }, [selectedImage]);
 
   return (
@@ -112,12 +116,15 @@ const ResultsPage = () => {
           <div className="row justify-content-start row-eq-height">
             <div className="col-md-3 left-elevated-column">
               {hasLoaded ? (
-                <AnalysedImage selectedImage={selectedImage} />
+                <AnalysedImage
+                  selectedImage={selectedImage}
+                  selectedModel={selectedModel}
+                />
               ) : null}
             </div>
             <div className="col-md-9 right-elevated-column">
               {" "}
-              <div className="col-6">
+              <div className="">
                 {isLoading ? <div className="loader">Processing...</div> : null}
                 {hasLoaded && hasError ? <p>Something went wrong</p> : null}
                 {hasLoaded && !hasError ? (

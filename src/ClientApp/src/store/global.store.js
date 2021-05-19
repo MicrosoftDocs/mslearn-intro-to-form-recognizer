@@ -21,6 +21,19 @@ const onSelectImage = (image) => {
   });
 };
 
+/**
+ * Sets selected image to the data extracted from an uploaded image
+ * using the format { uri: undefined, file, dataUri }
+ * @param {*} imgObj 
+ */
+const onUpload = (imgObj) => {
+  const state = useStore.getState();
+  useStore.setState({
+    ...state,
+    selectedImage: imgObj,
+  });
+};
+
 // ---------------------------------------------------------------
 // Global State vars
 // ---------------------------------------------------------------
@@ -34,4 +47,6 @@ export const useStore = create((set, get) => ({
   },
   setSelectedDocumentType: setSelectedDocumentType,
   onSelectImage: onSelectImage,
+  onUpload: onUpload,
+
 }));

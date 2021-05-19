@@ -179,7 +179,7 @@ footer {
   padding: 1px;
 }
 
-.linkedDocumentSelector {
+.linkedSelector {
   padding: 1px;
   color: #a2a2a2;
 }
@@ -202,6 +202,7 @@ footer {
   border-radius: 10px;
   box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
   border: solid 1px #dedede;
+  max-height: 700px;
 }
 
 .left-elevated-column {
@@ -249,6 +250,10 @@ footer {
   box-shadow: 0 3px 6px 0 #cccccc;
 }
 
+.analyzed-img-result {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
 /* should help with out of ratio images, but doesn't */
 .clearfix::after {
   content: "";
@@ -269,4 +274,45 @@ footer {
   text-align: center;
   display: flex;
   justify-content: center;
+}
+
+.json-pre {
+  max-height: 440px;
+}
+
+.analyzed-img-container {
+  padding: 50px 35px 29.9px 35px;
+  border-radius: 10px;
+  border: solid 1px #dedede;
+}
+
+circle {
+    fill: #406fdb;
+}
+
+
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle svg {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle-sm {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 0.9rem;
 }

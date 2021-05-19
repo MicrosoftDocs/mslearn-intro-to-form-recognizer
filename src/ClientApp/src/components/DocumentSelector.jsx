@@ -20,31 +20,35 @@ const DocumentSelector = (props) => {
     history.push("/fileselector");
   };
 
-  if (props.menuStyle == "links") {
+  if (props.menuStyle === "links") {
     // return the selector as links
     return (
-      <div className="linkedDocumentSelector">
-        <a
-          href="#"
+      <div className="linkedSelector">
+        <button
+          type="button"
           onClick={() => onChangeDocumentType("Invoices")}
           className={className({
+            "btn": true,
+            "btn-link": true,
             "linked-menu-item": true,
             "active-linked-menu-item": selectedDocumentType === "Invoices",
           })}
         >
           Invoices
-        </a>
+        </button>
         &nbsp;&nbsp; | &nbsp;&nbsp;
-        <a
-          href="#"
+        <button
+          type="button"
           onClick={() => onChangeDocumentType("Receipts")}
           className={className({
+            btn: true,
+            "btn-link": true,
             "linked-menu-item": true,
             "active-linked-menu-item": selectedDocumentType === "Receipts",
           })}
         >
           Receipts
-        </a>
+        </button>
       </div>
     );
   } else {
