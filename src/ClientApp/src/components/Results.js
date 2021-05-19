@@ -127,7 +127,7 @@ export const Results = ({ selectedModel, imageData }) => {
   return (
     <>
       <div className="d-flex justify-content-between mb-4 ">
-        <div ml-3>
+        <div className="ml-3">
           <p className="h4">{informationTitle}</p>
         </div>
         <div className="linkedSelector">

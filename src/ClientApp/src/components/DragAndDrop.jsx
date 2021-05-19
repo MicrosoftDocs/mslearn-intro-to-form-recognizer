@@ -38,18 +38,29 @@ const rejectStyle = {
 const DragAndDrop = (props) => {
   const history = useHistory();
   const onUpload = useStore((state) => state.onUpload);
-  // const selectedImage = useStore((state) => state.selectedImage);
+  const { enqueueSnackbar } = useSnackbar();
 
   const onDrop = useCallback(
     async (acceptedFiles, fileRejections) => {
       // console.log(`Accepted files: ${acceptedFiles}`);
       // console.log(`Rejected files: ${fileRejections}`);
+      if (fileRejections.length > 0) {
+        enqueueSnackbar(`Only .jpg or .png images will be accepted.`, {
+          variant: "error",
+          preventDuplicate: true,
+        });
+      }
       if (acceptedFiles.length > 0) {
         // console.log("Processing file");
         // console.log(acceptedFiles[0]);
         const file = acceptedFiles[0];
+        console.log(file);
         const dataUri = await getDataUrlFromFile(file);
         onUpload({ uri: undefined, file, dataUri });
+        enqueueSnackbar(`Uploading file "${file.name}"`, {
+          variant: "success",
+          preventDuplicate: true,
+        });
         history.push("/results");
       }
     },

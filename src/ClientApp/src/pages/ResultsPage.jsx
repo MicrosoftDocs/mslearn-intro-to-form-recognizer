@@ -81,6 +81,10 @@ const ResultsPage = () => {
       }
     };
     analyseSelectedImage();
+
+    return () => {
+      //cleanup due to warning;
+    };
   }, [selectedImage]);
 
   // if (requireSelection) {
@@ -110,7 +114,9 @@ const ResultsPage = () => {
 
       {/* title */}
       <div className="mt-4">
-        <p className="h1">{hasLoaded && !hasError ? "File Successfully read!" : "Processing..."}</p>
+        <p className="h1">
+          {hasLoaded && !hasError ? "File Successfully read!" : "Processing..."}
+        </p>
       </div>
 
       <div className="mt-3">
@@ -118,7 +124,10 @@ const ResultsPage = () => {
           <div className="row justify-content-start row-eq-height">
             <div className="col-md-3 left-elevated-column">
               {hasLoaded ? (
-                <AnalysedImage selectedImage={selectedImage} selectedModel={ selectedModel}/>
+                <AnalysedImage
+                  selectedImage={selectedImage}
+                  selectedModel={selectedModel}
+                />
               ) : null}
             </div>
             <div className="col-md-9 right-elevated-column">
