@@ -44,7 +44,7 @@ const DragAndDrop = (props) => {
     async (acceptedFiles, fileRejections) => {
       // console.log(`Accepted files: ${acceptedFiles}`);
       // console.log(`Rejected files: ${fileRejections}`);
-      if (fileRejections.length > 0) {
+      if (fileRejections.length > 0 || acceptedFiles.length === 0) {
         enqueueSnackbar(`Only .jpg or .png images will be accepted.`, {
           variant: "error",
           preventDuplicate: true,

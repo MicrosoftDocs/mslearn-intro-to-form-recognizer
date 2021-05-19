@@ -30,7 +30,7 @@ const ResultsPage = () => {
     //   console.log(selectedImage)
     //   console.log(uri, file, dataUri)
     if (!uri && !file && !dataUri) {
-      enqueueSnackbar(`Error! You need to select an image or upload a file.`, {
+      enqueueSnackbar(`Please select an image or upload a file.`, {
         variant: "error",
         preventDuplicate: true,
       });
