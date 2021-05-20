@@ -18,6 +18,7 @@ const onSelectImage = (image) => {
   useStore.setState({
     ...state,
     selectedImage: { uri, file: undefined, dataUri: undefined },
+    selectedImageFileName: image.filename,
   });
 };
 
@@ -26,11 +27,12 @@ const onSelectImage = (image) => {
  * using the format { uri: undefined, file, dataUri }
  * @param {*} imgObj 
  */
-const onUpload = (imgObj) => {
+const onUpload = (imgObj, filename) => {
   const state = useStore.getState();
   useStore.setState({
     ...state,
     selectedImage: imgObj,
+    selectedImageFileName: filename,
   });
 };
 
@@ -45,6 +47,7 @@ export const useStore = create((set, get) => ({
     file: undefined,
     dataUri: undefined,
   },
+  selectedImageFileName: "",
   setSelectedDocumentType: setSelectedDocumentType,
   onSelectImage: onSelectImage,
   onUpload: onUpload,

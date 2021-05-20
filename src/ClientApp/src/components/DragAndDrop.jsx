@@ -54,9 +54,8 @@ const DragAndDrop = (props) => {
       }
       if (acceptedFiles.length > 0) {
         const file = acceptedFiles[0];
-        console.log(file);
         const dataUri = await getDataUrlFromFile(file);
-        onUpload({ uri: undefined, file, dataUri });
+        onUpload({ uri: undefined, file, dataUri }, file.name);
         enqueueSnackbar(`Uploading file "${file.name}"...`, {
           variant: "success",
           preventDuplicate: true,

@@ -1,5 +1,14 @@
 import { capitalize } from "../utility";
-export const AnalysedImage = ({ selectedImage, selectedModel }) => {
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
+import { useState } from "react";
+
+export const AnalysedImage = ({
+  selectedImage,
+  selectedImageFileName,
+  selectedModel,
+}) => {
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
   const fileUrl = selectedImage?.uri
     ? selectedImage.uri
     : selectedImage.dataUri;
@@ -18,9 +27,12 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
           alt="Analysed Document"
         />
 
-        <div align="right" style={{ "margin-top": "15px" }}>
+        <div align="right" style={{ marginTop: "15px" }}>
           {/* <p> </p> */}
-          <button className="btn btn-primary btn-circle btn-circle-sm m-1">
+          <button
+            className="btn btn-primary btn-circle btn-circle-sm m-1"
+            onClick={() => setIsLightBoxOpen(true)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"
@@ -42,6 +54,13 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
           </button>
         </div>
       </div>
+      {isLightBoxOpen && (
+        <Lightbox
+          mainSrc={fileUrl}
+          onCloseRequest={() => setIsLightBoxOpen(false)}
+        />
+      )}
+      <div className="text-muted">{selectedImageFileName}</div>
     </div>
   );
 };
