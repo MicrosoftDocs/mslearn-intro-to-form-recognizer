@@ -28,7 +28,6 @@ const onSelectImage = (image) => {
  * @param {*} imgObj 
  */
 const onUpload = (imgObj, filename) => {
-  console.log(imgObj)
   const state = useStore.getState();
   useStore.setState({
     ...state,

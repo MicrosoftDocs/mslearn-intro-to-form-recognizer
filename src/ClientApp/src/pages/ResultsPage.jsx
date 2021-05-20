@@ -15,7 +15,9 @@ const ResultsPage = () => {
     state.selectedDocumentType.toLowerCase()
   );
   const selectedImage = useStore((state) => state.selectedImage);
-  const selectedImageFileName = useStore((state) => state.selectedImageFileName);
+  const selectedImageFileName = useStore(
+    (state) => state.selectedImageFileName
+  );
   const isLoading = processingStatus === "pending";
   const hasError = processingStatus === "failure";
   const hasLoaded =
@@ -56,7 +58,6 @@ const ResultsPage = () => {
             body: JSON.stringify(body),
           });
           const data = await response.json();
-          console.log(data);
           setImageData(data);
         } else if (selectedImage.file) {
           const formData = new FormData();
