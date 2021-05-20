@@ -126,7 +126,7 @@ export const Results = ({ selectedModel, imageData }) => {
   const informationTitle = `Data found in ${documentName}`;
   return (
     <>
-      <div className="d-flex justify-content-between mb-4 ">
+      <div className="d-flex justify-content-between mb-4 row">
         <div className="ml-3">
           <p className="h4">{informationTitle}</p>
         </div>
