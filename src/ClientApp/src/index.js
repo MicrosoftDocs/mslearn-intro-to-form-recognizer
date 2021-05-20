@@ -6,7 +6,7 @@ import { SnackbarProvider } from "notistack";
 ReactDOM.render(
   <React.StrictMode>
     <SnackbarProvider
-      autoHideDuration={3500}
+      autoHideDuration={3000}
       maxSnack={3}
       anchorOrigin={{
         vertical: "top",

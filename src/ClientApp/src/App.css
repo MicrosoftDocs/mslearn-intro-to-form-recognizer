@@ -181,6 +181,7 @@ footer {
 
 .linkedSelector {
   /* padding: 1px; */
+  white-space: nowrap;
   color: #a2a2a2;
 }
 
@@ -202,7 +203,7 @@ footer {
   border-radius: 10px;
   box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
   border: solid 1px #dedede;
-  max-height: 700px;
+  /* max-height: 700px; */
 }
 
 .left-elevated-column {

@@ -32,7 +32,7 @@ const FileSelectorPage = () => {
       </div>
 
       <div className="mt-3">
-        <div className="elevated">
+        <div className="row elevated">
           <div className="row justify-content-start row-eq-height">
             <div className="col-md-3 left-elevated-column">
               <DragAndDrop />
