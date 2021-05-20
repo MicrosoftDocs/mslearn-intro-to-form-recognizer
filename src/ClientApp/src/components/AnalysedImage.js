@@ -3,7 +3,11 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 import { useState } from "react";
 
-export const AnalysedImage = ({ selectedImage, selectedModel }) => {
+export const AnalysedImage = ({
+  selectedImage,
+  selectedImageFileName,
+  selectedModel,
+}) => {
   const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
   const fileUrl = selectedImage?.uri
     ? selectedImage.uri
@@ -23,7 +27,7 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
           alt="Analysed Document"
         />
 
-        <div align="right" style={{ "marginTop": "15px" }}>
+        <div align="right" style={{ marginTop: "15px" }}>
           {/* <p> </p> */}
           <button
             className="btn btn-primary btn-circle btn-circle-sm m-1"
@@ -51,10 +55,12 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
         </div>
       </div>
       {isLightBoxOpen && (
-        <Lightbox mainSrc={fileUrl} onCloseRequest={() => setIsLightBoxOpen(false)} />
+        <Lightbox
+          mainSrc={fileUrl}
+          onCloseRequest={() => setIsLightBoxOpen(false)}
+        />
       )}
-      {/* TODO: find a way to display image file name only! (pehaps saving it in store beforehand) */}
-    { selectedImage.name }
+      <div className="text-muted">{selectedImageFileName}</div>
     </div>
   );
 };
