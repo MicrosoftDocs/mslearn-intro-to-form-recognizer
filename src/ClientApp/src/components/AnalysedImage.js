@@ -4,7 +4,7 @@ import "react-image-lightbox/style.css"; // This only needs to be imported once 
 import { useState } from "react";
 
 export const AnalysedImage = ({ selectedImage, selectedModel }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
   const fileUrl = selectedImage?.uri
     ? selectedImage.uri
     : selectedImage.dataUri;
@@ -27,7 +27,7 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
           {/* <p> </p> */}
           <button
             className="btn btn-primary btn-circle btn-circle-sm m-1"
-            onClick={() => setIsOpen(true)}
+            onClick={() => setIsLightBoxOpen(true)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +50,8 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
           </button>
         </div>
       </div>
-      {isOpen && (
-        <Lightbox mainSrc={fileUrl} onCloseRequest={() => setIsOpen(false)} />
+      {isLightBoxOpen && (
+        <Lightbox mainSrc={fileUrl} onCloseRequest={() => setIsLightBoxOpen(false)} />
       )}
     </div>
   );
