@@ -27,7 +27,6 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
           {/* <p> </p> */}
           <button
             className="btn btn-primary btn-circle btn-circle-sm m-1"
-            style={{ position: "relative", left: -11, bottom: -20 }}
             onClick={() => setIsOpen(true)}
           >
             <svg
