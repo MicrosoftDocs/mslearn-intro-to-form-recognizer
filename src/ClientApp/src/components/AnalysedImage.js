@@ -23,7 +23,7 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
           alt="Analysed Document"
         />
 
-        <div align="right" style={{ "margin-top": "15px" }}>
+        <div align="right" style={{ "marginTop": "15px" }}>
           {/* <p> </p> */}
           <button
             className="btn btn-primary btn-circle btn-circle-sm m-1"
@@ -53,6 +53,8 @@ export const AnalysedImage = ({ selectedImage, selectedModel }) => {
       {isLightBoxOpen && (
         <Lightbox mainSrc={fileUrl} onCloseRequest={() => setIsLightBoxOpen(false)} />
       )}
+      {/* TODO: find a way to display image file name only! (pehaps saving it in store beforehand) */}
+    { selectedImage.name }
     </div>
   );
 };
