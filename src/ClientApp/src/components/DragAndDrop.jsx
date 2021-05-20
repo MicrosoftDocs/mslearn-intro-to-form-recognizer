@@ -6,8 +6,6 @@ import { useStore } from "../store/global.store";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
-// TODO: give some sort of visual feedback when a file is successfuly dropped
-
 // Dropzone styling
 const baseStyle = {
   display: "flex",
@@ -30,13 +28,13 @@ const activeStyle = {
 };
 
 const acceptStyle = {
-  borderColor: "#1bc101",
-  borderWidth: 2,
+  borderColor: "#02ac10",
+  borderWidth: 3,
 };
 
 const rejectStyle = {
-  borderColor: "#ff1744",
-  borderWidth: 2,
+  borderColor: "#d30303",
+  borderWidth: 3,
 };
 
 const DragAndDrop = (props) => {
@@ -55,13 +53,11 @@ const DragAndDrop = (props) => {
         });
       }
       if (acceptedFiles.length > 0) {
-        // console.log("Processing file");
-        // console.log(acceptedFiles[0]);
         const file = acceptedFiles[0];
         console.log(file);
         const dataUri = await getDataUrlFromFile(file);
         onUpload({ uri: undefined, file, dataUri });
-        enqueueSnackbar(`Uploading file "${file.name}"`, {
+        enqueueSnackbar(`Uploading file "${file.name}"...`, {
           variant: "success",
           preventDuplicate: true,
         });
