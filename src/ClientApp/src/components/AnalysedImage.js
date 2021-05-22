@@ -1,6 +1,6 @@
 import { capitalize } from "../utility";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
+import Lightbox from "./react-image-lightbox";
+import "./react-image-lightbox/style.css"; // This only needs to be imported once in your app
 import { useState } from "react";
 
 export const AnalysedImage = ({
