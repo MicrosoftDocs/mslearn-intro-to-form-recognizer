@@ -1,5 +1,67 @@
-.btn-image--selected img {
-  border: 1px solid black;
+/* @import url("http://fonts.cdnfonts.com/css/segoe-ui-4") */
+
+@font-face {
+  font-family: SegoeUI;
+  src: local("Segoe UI Light"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2)
+      format("woff2"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff)
+      format("woff"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf)
+      format("truetype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: SegoeUI;
+  src: local("Segoe UI Semilight"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2)
+      format("woff2"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff)
+      format("woff"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf)
+      format("truetype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: SegoeUI;
+  src: local("Segoe UI"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2)
+      format("woff2"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff)
+      format("woff"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf)
+      format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: SegoeUI;
+  src: local("Segoe UI Bold"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2)
+      format("woff2"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff)
+      format("woff"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf)
+      format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: SegoeUI;
+  src: local("Segoe UI Semibold"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2)
+      format("woff2"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff)
+      format("woff"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf)
+      format("truetype");
+  font-weight: 700;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif !important;
 }
 
 .btn {
@@ -11,7 +73,7 @@
 }
 
 .btn-primary {
-  background-color: #0077d3;
+  background-color: #0078d4;
 }
 
 .nav-tabs .nav-item {
@@ -31,9 +93,12 @@
   outline: none;
 }
 
+.nav-tabs .nav-item .nav-link {
+  color: #0078d4;
+}
 .nav-tabs .nav-item .nav-link.active {
   color: white;
-  background-color: #0077d3;
+  background-color: #0078d4;
 }
 
 .text {
@@ -63,7 +128,7 @@
   border-top: 1.1em solid rgba(255, 255, 255, 0.2);
   border-right: 1.1em solid rgba(255, 255, 255, 0.2);
   border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-left: 1.1em solid #0077d3;
+  border-left: 1.1em solid #0078d4;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -89,4 +154,166 @@
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+footer {
+  z-index: 90;
+  padding: 0.7rem 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #efefef;
+}
+
+.landing-left-col {
+  min-height: 880px;
+  /* max-width: 703px; */
+  background-image: url("./images/desktop-image.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+.documentSelector {
+  background-color: #0078d4;
+  padding: 1px;
+}
+
+.linkedSelector {
+  /* padding: 1px; */
+  white-space: nowrap;
+  color: #a2a2a2;
+}
+
+.linked-menu-item {
+  color: #a2a2a2;
+}
+
+.active-linked-menu-item {
+  color: #406fdb;
+  text-decoration: underline;
+}
+
+.elevated {
+  margin-top: 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
+  border: solid 1px #dedede;
+  /* max-height: 700px; */
+}
+
+.left-elevated-column {
+  padding-right: 20px;
+}
+
+.right-elevated-column {
+  border-left: solid 1px #b2b2b2;
+  padding-left: 20px;
+}
+
+.gallery-grid {
+  max-height: 640px;
+  margin-top: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 15px;
+}
+
+.hr2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: solid 1px #707070;
+}
+
+.gallery-item {
+  max-width: 180px;
+  height: 170px;
+  border-radius: 10px;
+  margin: 15px;
+  padding: 20px 0;
+  border: solid 1px #cccccc;
+  align-self: center;
+}
+
+.gallery-item--selected {
+  box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
+  border: solid 1px #0078d4;
+}
+
+.img-thumbnail {
+  width: 108px;
+  /* height: auto; */
+  box-shadow: 0 3px 6px 0 #cccccc;
+}
+
+.analyzed-img-result {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+/* should help with out of ratio images, but doesn't */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.cloud-upload-icon {
+  width: 110px;
+  height: 110px;
+  opacity: 0.35;
+  margin-bottom: 30px;
+  display: inline;
+}
+
+.drag-and-drop-container {
+  min-height: 540px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.json-pre {
+  max-height: 440px;
+}
+
+.analyzed-img-container {
+  padding: 50px 35px 29.9px 35px;
+  border-radius: 10px;
+  border: solid 1px #dedede;
+}
+
+circle {
+    fill: #406fdb;
+}
+
+
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle svg {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle-sm {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 0.9rem;
 }
