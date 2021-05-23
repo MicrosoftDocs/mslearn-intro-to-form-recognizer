@@ -1,5 +1,5 @@
 import create from "zustand";
-import { getDataUrlFromFile, getImageUriFromFileName } from "../utility";
+import { getImageUriFromFileName } from "../utility";
 
 // ---------------------------------------------------------------
 // Global Methods (are here because they manipulate global state)
@@ -25,7 +25,7 @@ const onSelectImage = (image) => {
 /**
  * Sets selected image to the data extracted from an uploaded image
  * using the format { uri: undefined, file, dataUri }
- * @param {*} imgObj 
+ * @param {*} imgObj
  */
 const onUpload = (imgObj, filename) => {
   const state = useStore.getState();
@@ -51,5 +51,4 @@ export const useStore = create((set, get) => ({
   setSelectedDocumentType: setSelectedDocumentType,
   onSelectImage: onSelectImage,
   onUpload: onUpload,
-
 }));

@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useCallback, useMemo } from "react";
 // import PropTypes from "prop-types";
 import { useDropzone } from "react-dropzone";
-import { getDataUrlFromFile, getImageUriFromFileName } from "../utility";
+import { getDataUrlFromFile } from "../utility";
 import { useStore } from "../store/global.store";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -63,7 +64,7 @@ const DragAndDrop = (props) => {
         history.push("/results");
       }
     },
-    [onUpload]
+    [onUpload, enqueueSnackbar, history]
   );
 
   const {

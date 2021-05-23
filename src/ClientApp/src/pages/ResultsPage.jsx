@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "@primer/octicons-react";
+import { ArrowLeftIcon } from "@primer/octicons-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import DocumentSelector from "../components/DocumentSelector";
@@ -83,7 +83,7 @@ const ResultsPage = () => {
     return () => {
       //cleanup due to warning;
     };
-  }, [selectedImage]);
+  }, [selectedImage,enqueueSnackbar, history, selectedModel]);
 
   return (
     <div className="container">

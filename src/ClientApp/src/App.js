@@ -1,15 +1,7 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // local imports
 import "./App.css";
-import {
-  ImageSelection,
-  Results,
-  AnalysedImage,
-  ModelSelector,
-} from "./components";
-import { getDataUrlFromFile, getImageUriFromFileName } from "./utility";
 import Footer from "./components/Footer";
 import LandingPage from "./pages/LandingPage";
 import FileSelectorPage from "./pages/FileSelectorPage";

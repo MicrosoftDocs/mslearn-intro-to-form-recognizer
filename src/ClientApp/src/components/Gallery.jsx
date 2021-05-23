@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useStore } from "../store/global.store";
 import { INVOICES, RECEIPTS } from "../data";
