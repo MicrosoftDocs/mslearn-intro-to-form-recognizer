@@ -14,10 +14,17 @@ export const getDataUrlFromFile = async (file) =>
     reader.readAsDataURL(file);
   });
 
+/**
+ * Builds a fully qualified image URL from an image filename
+ * 
+ * @param {*} filename 
+ * @returns fully qualified URL 
+ */
 export const getImageUriFromFileName = (filename) => {
-  const baseUri =
-    process.env.NODE_ENV === "development"
-      ? "https://formrecognizer-showcase.azurewebsites.net"
-      : window.location.origin;
+  // In dev, the URL is HARDCODED, because the service needs an
+  // internet accessible URL
+  const baseUri = process.env.NODE_ENV === "development"
+    ? "https://formrecognizer-showcase.azurewebsites.net"
+    : window.location.origin;
   return `${baseUri}/${filename}`;
 };
