@@ -38,6 +38,7 @@ const FileSelectorPage = () => {
               <DragAndDrop />
             </div>
             <div className="col-md-9 right-elevated-column">
+              <hr className="mobile-only-hr" />
               <Gallery />
             </div>
           </div>

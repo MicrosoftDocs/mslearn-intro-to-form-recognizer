@@ -327,7 +327,13 @@ circle {
   display: none;
 }
 
-/* Extra small devices (portrait phones, less than 576px) */
+.mobile-only-hr {
+  display: none;
+}
+
+/* 
+ * Extra small devices (portrait phones, less than 576px) 
+ */
 @media (max-width: 575.98px) {
   .landing-left-col {
     min-height: 261px;
@@ -377,7 +383,6 @@ circle {
     text-align: center;
     display: flex;
     justify-content: center;
-    /* background-color: pink; */
     font-size: 0.85rem;
   }
 
@@ -410,5 +415,12 @@ circle {
 
   .bottom-spacer {
     max-height: 1px;
+  }
+
+  .mobile-only-hr {
+    display: block;
+    margin-top: 30px;
+    margin: 30px 5px 0 0;
+    border: solid 1px #b2b2b2;
   }
 }
