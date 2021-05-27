@@ -288,9 +288,8 @@ footer {
 }
 
 circle {
-    fill: #406fdb;
+  fill: #406fdb;
 }
-
 
 .btn-circle {
   width: 45px;
@@ -316,4 +315,47 @@ circle {
   height: 35px;
   line-height: 35px;
   font-size: 0.9rem;
+}
+
+.site-logo {
+  /* position: absolute; */
+  margin-top: 30px;
+}
+
+.site-logo-mobile {
+  display: none;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .landing-left-col {
+    min-height: 261px;
+    min-width: 100%;
+    background-image: url("./images/mobile-image.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-top: 69.6%; /* img height/img-width */
+    max-width: 100px;
+  }
+
+  .site-logo-mobile {
+    display: inline;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+
+  .site-logo {
+    display: none;
+  }
+
+  /* hides FAQ link in footer */
+  .faq-link {
+    display: none;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    -ms-flex-align: stretch;
+  }
 }
