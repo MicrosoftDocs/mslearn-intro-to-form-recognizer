@@ -428,14 +428,6 @@ circle {
 /*
  * table specific classes
  */
-/* table {
-  width: 100%;
-  border-collapse: collapse;
-} */
-/* Zebra striping */
-tr:nth-of-type(odd) {
-  /* background: #eee;  */
-}
 th {
   /* background: #333; 
   color: white; 
@@ -451,10 +443,8 @@ th {
 }
 
 /* 
-Max width before this PARTICULAR table gets nasty
-This query will take effect for any screen smaller than 760px
-and also iPads specifically.
-*/
+ * Implements table styles for mobile devices 
+ */
 
 @media only screen and (max-width: 576px) {
   /* Force table to not be like tables anymore */
@@ -513,6 +503,8 @@ and also iPads specifically.
   /*
 	Label the data
 	*/
+
+  /* Commented as this needs TDs to hava "data-title" attributes */
   /* td:before { content: attr(data-title); } */
 
   /* This way we don't need data-title attributes in each tr */

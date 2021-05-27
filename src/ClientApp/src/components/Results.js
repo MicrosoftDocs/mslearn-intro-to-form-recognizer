@@ -141,7 +141,7 @@ export const Results = ({ selectedModel, imageData }) => {
         <div className="ml-3">
           <p className="h4 sub-title">{informationTitle}</p>
         </div>
-        <div className="linkedSelector ml-3">
+        <div className="linkedSelector ml-3 mr-3">
           <button
             type="button"
             onClick={() => setActiveTab("information")}
