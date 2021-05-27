@@ -2,6 +2,8 @@ import { useState } from "react";
 import className from "classnames";
 import { capitalize } from "../utility";
 
+// Define which table style to use, according to
+// viewport width
 const windowWidth = window.innerWidth;
 const tableClass = windowWidth >= 567 ? "table" : "collapsed-table";
 
@@ -52,17 +54,18 @@ const InvoiceResultTable = ({
   </table>
 );
 
-const ReceiptsResultTable = (
-  {
-    fields: {
-      MerchantName,
-      MerchantAddress,
-      MerchantPhoneNumber,
-      TransactionDate,
-      TransactionTime,
-    },
-  }
-) => (
+const ReceiptsResultTable = ({
+  fields: {
+    MerchantName,
+    MerchantAddress,
+    MerchantPhoneNumber,
+    TransactionDate,
+    TransactionTime,
+    Subtotal,
+    Tip,
+    Total,
+  },
+}) => (
   <table className={tableClass}>
     <thead>
       <tr>
@@ -97,6 +100,21 @@ const ReceiptsResultTable = (
         <td>{TransactionTime?.valueData.text}</td>
         <td>{TransactionTime?.confidence}</td>
       </tr>
+      <tr>
+        <td>Subtotal</td>
+        <td>{Subtotal?.valueData.text}</td>
+        <td>{Subtotal?.confidence}</td>
+      </tr>
+      <tr>
+        <td>Tip</td>
+        <td>{Tip?.valueData.text}</td>
+        <td>{Tip?.confidence}</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>{Total?.valueData.text}</td>
+        <td>{Total?.confidence}</td>
+      </tr>
     </tbody>
   </table>
 );
@@ -122,12 +140,10 @@ export const Results = ({ selectedModel, imageData }) => {
         return selectedModel === "invoices" ? (
           <InvoiceResultTable
             fields={imageData.fields}
-            tableClass={tableClass}
           />
         ) : (
           <ReceiptsResultTable
             fields={imageData.fields}
-            tableClass={tableClass}
           />
         );
       }
