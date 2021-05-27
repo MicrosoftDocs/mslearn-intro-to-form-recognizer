@@ -334,7 +334,7 @@ circle {
 /* 
  * Extra small devices (portrait phones, less than 576px) 
  */
-@media (max-width: 575.98px) {
+@media (max-width: 576px) {
   .landing-left-col {
     min-height: 261px;
     min-width: 100%;
@@ -422,5 +422,107 @@ circle {
     margin-top: 30px;
     margin: 30px 5px 0 0;
     border: solid 1px #b2b2b2;
+  }
+}
+
+/*
+ * table specific classes
+ */
+/* table {
+  width: 100%;
+  border-collapse: collapse;
+} */
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  /* background: #eee;  */
+}
+th {
+  /* background: #333; 
+  color: white; 
+  font-weight: bold;  */
+  font-size: 0.85rem;
+}
+td,
+th {
+  /* padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left;  */
+  font-size: 0.85rem;
+}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+
+@media only screen and (max-width: 576px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  .collapsed-table {
+    width: 100%;
+    display: block;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-left: 0px;
+    border-right: 0px;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border-top: 1px solid #ccc;
+    padding: 5px;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  /*
+	Label the data
+	*/
+  /* td:before { content: attr(data-title); } */
+
+  /* This way we don't need data-title attributes in each tr */
+  td:nth-of-type(1):before {
+    content: "Field:";
+  }
+  td:nth-of-type(2):before {
+    content: "Value:";
+  }
+  td:nth-of-type(3):before {
+    content: "Confidence:";
   }
 }

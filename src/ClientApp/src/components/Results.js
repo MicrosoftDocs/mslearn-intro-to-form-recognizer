@@ -2,6 +2,9 @@ import { useState } from "react";
 import className from "classnames";
 import { capitalize } from "../utility";
 
+const windowWidth = window.innerWidth;
+const tableClass = windowWidth >= 567 ? "table" : "collapsed-table";
+
 const InvoiceResultTable = ({
   fields: {
     InvoiceDate,
@@ -11,12 +14,12 @@ const InvoiceResultTable = ({
     InvoiceTotal,
   },
 }) => (
-  <table className="table">
+  <table className={tableClass}>
     <thead>
       <tr>
         <th>Field</th>
-        <th>Value</th>
-        <th>Confidence</th>
+        <th className="numeric">Value</th>
+        <th className="numeric">Confidence</th>
       </tr>
     </thead>
     <tbody>
@@ -49,21 +52,23 @@ const InvoiceResultTable = ({
   </table>
 );
 
-const ReceiptsResultTable = ({
-  fields: {
-    MerchantName,
-    MerchantAddress,
-    MerchantPhoneNumber,
-    TransactionDate,
-    TransactionTime,
-  },
-}) => (
-  <table className="table">
+const ReceiptsResultTable = (
+  {
+    fields: {
+      MerchantName,
+      MerchantAddress,
+      MerchantPhoneNumber,
+      TransactionDate,
+      TransactionTime,
+    },
+  }
+) => (
+  <table className={tableClass}>
     <thead>
       <tr>
         <th>Field</th>
-        <th>Value</th>
-        <th>Confidence</th>
+        <th className="numeric">Value</th>
+        <th className="numeric">Confidence</th>
       </tr>
     </thead>
     <tbody>
@@ -115,9 +120,15 @@ export const Results = ({ selectedModel, imageData }) => {
       case "information":
       default: {
         return selectedModel === "invoices" ? (
-          <InvoiceResultTable fields={imageData.fields} />
+          <InvoiceResultTable
+            fields={imageData.fields}
+            tableClass={tableClass}
+          />
         ) : (
-          <ReceiptsResultTable fields={imageData.fields} />
+          <ReceiptsResultTable
+            fields={imageData.fields}
+            tableClass={tableClass}
+          />
         );
       }
     }
