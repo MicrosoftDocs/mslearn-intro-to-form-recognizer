@@ -12,7 +12,7 @@ const Gallery = () => {
 
   return (
     <div className="gallery-container">
-      <p className="h4">
+      <p className="h4 sub-title">
         {selectedDocumentType === "Invoices" ? "Invoice" : "Receipt"} Gallery
       </p>
       <div className="gallery-grid">

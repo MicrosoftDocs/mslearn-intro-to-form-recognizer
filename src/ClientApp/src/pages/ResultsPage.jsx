@@ -108,7 +108,7 @@ const ResultsPage = () => {
 
       {/* title */}
       <div className="mt-4">
-        <p className="h1">
+        <p className="h1 page-title">
           {hasLoaded && !hasError ? "File Successfully read!" : "Processing..."}
         </p>
       </div>
@@ -164,7 +164,7 @@ const ResultsPage = () => {
       </div>
 
       {/* space at the bottom for mobile */}
-      <div className="mt-5">
+      <div className="mt-5 bottom-spacer">
         <p>&nbsp;</p>
       </div>
     </div>

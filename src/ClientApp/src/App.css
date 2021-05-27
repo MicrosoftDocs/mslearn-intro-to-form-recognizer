@@ -180,13 +180,14 @@ footer {
 }
 
 .linkedSelector {
-  /* padding: 1px; */
+  padding: 0px;
   white-space: nowrap;
   color: #a2a2a2;
 }
 
 .linked-menu-item {
   color: #a2a2a2;
+  padding: 0px;
 }
 
 .active-linked-menu-item {
@@ -271,7 +272,7 @@ footer {
 }
 
 .drag-and-drop-container {
-  min-height: 540px;
+  min-height: 520px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -357,5 +358,57 @@ circle {
   .footer-text {
     font-size: 0.8rem;
     -ms-flex-align: stretch;
+  }
+
+  .page-title {
+    font-size: 1.85rem;
+  }
+
+  .cloud-upload-icon {
+    width: 45px;
+    height: 45px;
+    opacity: 0.35;
+    margin-bottom: 3px;
+    display: inline;
+  }
+
+  .drag-and-drop-container {
+    min-height: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* background-color: pink; */
+    font-size: 0.85rem;
+  }
+
+  .elevated {
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
+    border: solid 1px #dedede;
+    /* max-height: 700px; */
+  }
+
+  .right-elevated-column {
+    border-left: unset;
+  }
+
+  .sub-title {
+    margin-top: 30px;
+    font-size: 1.2rem;
+  }
+
+  .drag-and-drop-help {
+    font-size: 1rem;
+  }
+
+  .bottom-spacer {
+    max-height: 1px;
   }
 }
