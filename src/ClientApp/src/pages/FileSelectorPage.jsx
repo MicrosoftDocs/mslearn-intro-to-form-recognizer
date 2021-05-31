@@ -7,17 +7,17 @@ import Gallery from "../components/Gallery";
 const FileSelectorPage = () => {
   return (
     <div className="container">
-      <div className="mt-5 pb-5">
+      <div className="mt-5 mb-4">
         <img
           style={{ height: "30px" }}
-          className="img-fluid"
+          // className="img-fluid"
           alt="Microsoft"
           src="/site-logo.png"
         />
       </div>
 
       {/* document selector */}
-      <div className="mt-3">
+      <div className="mt-1 pt-1">
         <DocumentSelector menuStyle="links" />
       </div>
 
@@ -28,16 +28,17 @@ const FileSelectorPage = () => {
 
       {/* title */}
       <div className="mt-4">
-        <p className="h1">Upload or Select a file</p>
+        <p className="h1 page-title">Upload or Select a file</p>
       </div>
 
       <div className="mt-3">
         <div className="row elevated">
-          <div className="row justify-content-start row-eq-height">
+          <div className="row justify-content-start">
             <div className="col-md-3 left-elevated-column">
               <DragAndDrop />
             </div>
             <div className="col-md-9 right-elevated-column">
+              <hr className="mobile-only-hr" />
               <Gallery />
             </div>
           </div>
@@ -59,7 +60,7 @@ const FileSelectorPage = () => {
       </div>
 
       {/* space at the bottom for mobile */}
-      <div className="mt-5">
+      <div className="mt-5 bottom-spacer">
         <p>&nbsp;</p>
       </div>
     </div>

@@ -180,13 +180,14 @@ footer {
 }
 
 .linkedSelector {
-  /* padding: 1px; */
+  padding: 0px;
   white-space: nowrap;
   color: #a2a2a2;
 }
 
 .linked-menu-item {
   color: #a2a2a2;
+  padding: 0px;
 }
 
 .active-linked-menu-item {
@@ -271,7 +272,7 @@ footer {
 }
 
 .drag-and-drop-container {
-  min-height: 540px;
+  min-height: 520px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -288,9 +289,8 @@ footer {
 }
 
 circle {
-    fill: #406fdb;
+  fill: #406fdb;
 }
-
 
 .btn-circle {
   width: 45px;
@@ -316,4 +316,205 @@ circle {
   height: 35px;
   line-height: 35px;
   font-size: 0.9rem;
+}
+
+.site-logo {
+  /* position: absolute; */
+  margin-top: 30px;
+}
+
+.site-logo-mobile {
+  display: none;
+}
+
+.mobile-only-hr {
+  display: none;
+}
+
+/* 
+ * Extra small devices (portrait phones, less than 576px) 
+ */
+@media (max-width: 576px) {
+  .landing-left-col {
+    min-height: 261px;
+    min-width: 100%;
+    background-image: url("./images/mobile-image.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-top: 69.6%; /* img height/img-width */
+    max-width: 100px;
+  }
+
+  .site-logo-mobile {
+    display: inline;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+
+  .site-logo {
+    display: none;
+  }
+
+  /* hides FAQ link in footer */
+  .faq-link {
+    display: none;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    -ms-flex-align: stretch;
+  }
+
+  .page-title {
+    font-size: 1.85rem;
+  }
+
+  .cloud-upload-icon {
+    width: 45px;
+    height: 45px;
+    opacity: 0.35;
+    margin-bottom: 3px;
+    display: inline;
+  }
+
+  .drag-and-drop-container {
+    min-height: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  .elevated {
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.13);
+    border: solid 1px #dedede;
+    /* max-height: 700px; */
+  }
+
+  .right-elevated-column {
+    border-left: unset;
+  }
+
+  .sub-title {
+    margin-top: 30px;
+    font-size: 1.2rem;
+  }
+
+  .drag-and-drop-help {
+    font-size: 1rem;
+  }
+
+  .bottom-spacer {
+    max-height: 1px;
+  }
+
+  .mobile-only-hr {
+    display: block;
+    margin-top: 30px;
+    margin: 30px 5px 0 0;
+    border: solid 1px #b2b2b2;
+  }
+}
+
+/*
+ * table specific classes
+ */
+th {
+  /* background: #333; 
+  color: white; 
+  font-weight: bold;  */
+  font-size: 0.85rem;
+}
+td,
+th {
+  /* padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left;  */
+  font-size: 0.85rem;
+}
+
+/* 
+ * Implements table styles for mobile devices 
+ */
+
+@media only screen and (max-width: 576px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  .collapsed-table {
+    width: 100%;
+    display: block;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-left: 0px;
+    border-right: 0px;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border-top: 1px solid #ccc;
+    padding: 5px;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  /*
+	Label the data
+	*/
+
+  /* Commented as this needs TDs to hava "data-title" attributes */
+  /* td:before { content: attr(data-title); } */
+
+  /* This way we don't need data-title attributes in each tr */
+  td:nth-of-type(1):before {
+    content: "Field:";
+  }
+  td:nth-of-type(2):before {
+    content: "Value:";
+  }
+  td:nth-of-type(3):before {
+    content: "Confidence:";
+  }
 }

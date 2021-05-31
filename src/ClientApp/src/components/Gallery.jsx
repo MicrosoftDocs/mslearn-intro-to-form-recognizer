@@ -12,7 +12,7 @@ const Gallery = () => {
 
   return (
     <div className="gallery-container">
-      <p className="h4">
+      <p className="h4 sub-title">
         {selectedDocumentType === "Invoices" ? "Invoice" : "Receipt"} Gallery
       </p>
       <div className="gallery-grid">
@@ -21,7 +21,8 @@ const Gallery = () => {
             const uri = getImageUriFromFileName(image.filename);
             const isSelected = uri === selectedImage?.uri;
             return (
-              <div key={image.name}
+              <div
+                key={image.name}
                 className={`col-xs-1 col-md-3 gallery-item ${
                   isSelected ? "gallery-item--selected" : ""
                 }`}

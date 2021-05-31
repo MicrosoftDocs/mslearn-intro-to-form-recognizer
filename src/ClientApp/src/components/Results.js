@@ -2,6 +2,11 @@ import { useState } from "react";
 import className from "classnames";
 import { capitalize } from "../utility";
 
+// Define which table style to use, according to
+// viewport width
+const windowWidth = window.innerWidth;
+const tableClass = windowWidth >= 567 ? "table" : "collapsed-table";
+
 const InvoiceResultTable = ({
   fields: {
     InvoiceDate,
@@ -11,12 +16,12 @@ const InvoiceResultTable = ({
     InvoiceTotal,
   },
 }) => (
-  <table className="table">
+  <table className={tableClass}>
     <thead>
       <tr>
         <th>Field</th>
-        <th>Value</th>
-        <th>Confidence</th>
+        <th className="numeric">Value</th>
+        <th className="numeric">Confidence</th>
       </tr>
     </thead>
     <tbody>
@@ -56,14 +61,17 @@ const ReceiptsResultTable = ({
     MerchantPhoneNumber,
     TransactionDate,
     TransactionTime,
+    Subtotal,
+    Tip,
+    Total,
   },
 }) => (
-  <table className="table">
+  <table className={tableClass}>
     <thead>
       <tr>
         <th>Field</th>
-        <th>Value</th>
-        <th>Confidence</th>
+        <th className="numeric">Value</th>
+        <th className="numeric">Confidence</th>
       </tr>
     </thead>
     <tbody>
@@ -92,6 +100,21 @@ const ReceiptsResultTable = ({
         <td>{TransactionTime?.valueData.text}</td>
         <td>{TransactionTime?.confidence}</td>
       </tr>
+      <tr>
+        <td>Subtotal</td>
+        <td>{Subtotal?.valueData.text}</td>
+        <td>{Subtotal?.confidence}</td>
+      </tr>
+      <tr>
+        <td>Tip</td>
+        <td>{Tip?.valueData.text}</td>
+        <td>{Tip?.confidence}</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>{Total?.valueData.text}</td>
+        <td>{Total?.confidence}</td>
+      </tr>
     </tbody>
   </table>
 );
@@ -115,9 +138,13 @@ export const Results = ({ selectedModel, imageData }) => {
       case "information":
       default: {
         return selectedModel === "invoices" ? (
-          <InvoiceResultTable fields={imageData.fields} />
+          <InvoiceResultTable
+            fields={imageData.fields}
+          />
         ) : (
-          <ReceiptsResultTable fields={imageData.fields} />
+          <ReceiptsResultTable
+            fields={imageData.fields}
+          />
         );
       }
     }
@@ -128,14 +155,14 @@ export const Results = ({ selectedModel, imageData }) => {
     <>
       <div className="d-flex justify-content-between mb-4 row">
         <div className="ml-3">
-          <p className="h4">{informationTitle}</p>
+          <p className="h4 sub-title">{informationTitle}</p>
         </div>
-        <div className="linkedSelector">
+        <div className="linkedSelector ml-3 mr-3">
           <button
             type="button"
             onClick={() => setActiveTab("information")}
             className={className({
-              "btn": true,
+              btn: true,
               "btn-link": true,
               "linked-menu-item": true,
               "active-linked-menu-item": activeTab === "information",
@@ -148,7 +175,7 @@ export const Results = ({ selectedModel, imageData }) => {
             type="button"
             onClick={() => setActiveTab("json")}
             className={className({
-              "btn": true,
+              btn: true,
               "btn-link": true,
               "linked-menu-item": true,
               "active-linked-menu-item": activeTab === "json",

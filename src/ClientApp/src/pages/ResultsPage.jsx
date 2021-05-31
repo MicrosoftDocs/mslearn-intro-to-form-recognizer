@@ -83,7 +83,7 @@ const ResultsPage = () => {
     return () => {
       //cleanup due to warning;
     };
-  }, [selectedImage,enqueueSnackbar, history, selectedModel]);
+  }, [selectedImage, enqueueSnackbar, history, selectedModel]);
 
   return (
     <div className="container">
@@ -108,7 +108,7 @@ const ResultsPage = () => {
 
       {/* title */}
       <div className="mt-4">
-        <p className="h1">
+        <p className="h1 page-title">
           {hasLoaded && !hasError ? "File Successfully read!" : "Processing..."}
         </p>
       </div>
@@ -131,10 +131,13 @@ const ResultsPage = () => {
                 {isLoading ? <div className="loader">Processing...</div> : null}
                 {hasLoaded && hasError ? <p>Something went wrong</p> : null}
                 {hasLoaded && !hasError ? (
-                  <Results
-                    selectedModel={selectedModel}
-                    imageData={imageData}
-                  />
+                  <>
+                    <hr className="mobile-only-hr" />
+                    <Results
+                      selectedModel={selectedModel}
+                      imageData={imageData}
+                    />
+                  </>
                 ) : null}
               </div>
             </div>
@@ -164,7 +167,7 @@ const ResultsPage = () => {
       </div>
 
       {/* space at the bottom for mobile */}
-      <div className="mt-5">
+      <div className="mt-5 bottom-spacer">
         <p>&nbsp;</p>
       </div>
     </div>

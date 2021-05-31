@@ -5,18 +5,24 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const LandingPage = () => {
   return (
     <div className="row m-0">
-      <div className="col-sm landing-left-col"></div>
+      <div className="col-sm landing-left-col">
+        {/* logo on mobile landing page */}
+        <img
+          style={{ height: "30px" }}
+          className="site-logo-mobile"
+          alt="Microsoft"
+          src="/site-logo-mobile.png"
+        />
+      </div>
       <div className="col-sm-6">
         <div className="container-fluid">
-          {/* logo */}
-          <div className="mt-5 pb-5">
-            <img
-              style={{ height: "30px" }}
-              className="img-fluid"
-              alt="Microsoft"
-              src="/site-logo.png"
-            />
-          </div>
+          {/* logo full screen */}
+          <img
+            style={{ height: "30px" }}
+            className="site-logo"
+            alt="Microsoft"
+            src="/site-logo.png"
+          />
 
           {/* welcome */}
           <div className="mt-5">
@@ -38,7 +44,7 @@ const LandingPage = () => {
           </div>
 
           {/* separator */}
-          <div className="mt-5">
+          <div className="mt-4 pt-1">
             <hr size="2" />
           </div>
 
