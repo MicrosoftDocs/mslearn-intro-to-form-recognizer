@@ -5,60 +5,16 @@ export const INVOICES = [
   },
   {
     name: "Invoice 2",
-    filename: "invoice-2.png",
+    filename: "invoice-2.jpg",
   },
   {
     name: "Invoice 3",
-    filename: "invoice-3.png",
+    filename: "invoice-3.jpg",
   },
   {
     name: "Invoice 4",
-    filename: "invoice-4.png",
+    filename: "invoice-4.jpg",
   },
-  // {
-  //   name: "Invoice 13",
-  //   filename: "invoice-3.png",
-  // },
-  // {
-  //   name: "Invoice 11",
-  //   filename: "invoice-1.jpg",
-  // },
-  // {
-  //   name: "Invoice 12",
-  //   filename: "invoice-2.png",
-  // },
-  // {
-  //   name: "Invoice 14",
-  //   filename: "invoice-4.png",
-  // },
-  // {
-  //   name: "Invoice 21",
-  //   filename: "invoice-1.jpg",
-  // },
-  // {
-  //   name: "Invoice 22",
-  //   filename: "invoice-2.png",
-  // },
-  // {
-  //   name: "Invoice 24",
-  //   filename: "invoice-4.png",
-  // },
-  // {
-  //   name: "Invoice 23",
-  //   filename: "invoice-3.png",
-  // },
-  // {
-  //   name: "Invoice 33",
-  //   filename: "invoice-3.png",
-  // },
-  // {
-  //   name: "Invoice 31",
-  //   filename: "invoice-1.jpg",
-  // },
-  // {
-  //   name: "Invoice 32",
-  //   filename: "invoice-2.png",
-  // },
 
 ];
 
@@ -69,6 +25,15 @@ export const RECEIPTS = [
   },
   {
     name: "Receipt 2",
-    filename: "receipt-2.png",
+    filename: "receipt-2.jpg",
   },
+  {
+    name: "Receipt 3",
+    filename: "receipt-3.jpg",
+  },
+  {
+    name: "Receipt 4",
+    filename: "receipt-4.jpg",
+  },
+  
 ];

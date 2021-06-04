@@ -26,5 +26,23 @@ export const getImageUriFromFileName = (filename) => {
   const baseUri = process.env.NODE_ENV === "development"
     ? "https://formrecognizer-showcase.azurewebsites.net"
     : window.location.origin;
-  return `${baseUri}/${filename}`;
+  // return `${baseUri}/${filename}`;
+  return `/${filename}`
+};
+
+/**
+ * Builds a fully qualified image URL from a thubmail image
+ * based on the full sized image's name
+ * 
+ * @param {*} filename 
+ * @returns fully qualified URL 
+ */
+export const getThumbnailUriFromFileName = (filename) => {
+  // In dev, the URL is HARDCODED, because the service needs an
+  // internet accessible URL
+  const baseUri = process.env.NODE_ENV === "development"
+    ? "https://formrecognizer-showcase.azurewebsites.net"
+    : window.location.origin;
+  // return `${baseUri}/${filename}`;
+  return `/t-${filename}`
 };
