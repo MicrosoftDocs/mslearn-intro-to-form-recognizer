@@ -50,6 +50,7 @@ const ResultsPage = () => {
             uri: selectedImage.uri,
             model: selectedModel,
           };
+          console.log(body);
           const response = await fetch("form-recognizer", {
             method: "POST",
             headers: {
