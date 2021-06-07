@@ -2,7 +2,7 @@
 import React from "react";
 import { useStore } from "../store/global.store";
 import { INVOICES, RECEIPTS } from "../data";
-import { getImageUriFromFileName } from "../utility";
+import { getImageUriFromFileName, getThumbnailUriFromFileName } from "../utility";
 
 const Gallery = () => {
   const selectedDocumentType = useStore((state) => state.selectedDocumentType);
@@ -19,6 +19,7 @@ const Gallery = () => {
         <div className="row row-equal-height align-items-center justify-content-start">
           {images.map((image, index) => {
             const uri = getImageUriFromFileName(image.filename);
+            const thumbUri = getThumbnailUriFromFileName(image.filename);
             const isSelected = uri === selectedImage?.uri;
             return (
               <div
@@ -31,7 +32,7 @@ const Gallery = () => {
                 <center>
                   <a className="btn rounded no-outline">
                     <img
-                      src={uri}
+                      src={thumbUri}
                       alt={image.name}
                       className="img-thumbnail"
                     ></img>
