@@ -22,7 +22,7 @@ az cognitiveservices account create \
     --subscription $subscription\
     --yes
 apiKey=$(az cognitiveservices account keys list -g $resourceGroupName -n form-recognizer-resource --query [key1] -o tsv)
-endpoint=https://westus2.api.cognitive.microsoft.com/
+endpoint=https://westus3.api.cognitive.microsoft.com/
 
 # create the webapp
 webAppName=fr-$resourceGroupName
