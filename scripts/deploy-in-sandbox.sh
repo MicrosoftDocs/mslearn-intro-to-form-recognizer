@@ -18,7 +18,7 @@ az cognitiveservices account create \
     --resource-group $resourceGroupName \
     --kind FormRecognizer \
     --sku S0 \
-    --location westus2 \
+    --location westus \
     --subscription $subscription\
     --yes
 apiKey=$(az cognitiveservices account keys list -g $resourceGroupName -n form-recognizer-resource --query [key1] -o tsv)
